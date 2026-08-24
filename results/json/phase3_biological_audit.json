@@ -1,0 +1,57 @@
+{
+  "off_target_definition": {
+    "genome_build": "GRCh38 (GCA_000001405.15, no-alt analysis set)",
+    "nuclease": "SpCas9",
+    "PAM": "NGG (3' of protospacer)",
+    "protospacer_length_nt": 20,
+    "max_mismatch_hamming": 3,
+    "indels": "none (substitutions only; bulges not modelled)",
+    "aggregation": "genome-wide near-match COUNT over chromosomes != chr22, excl. chrM/chrY",
+    "surrogate_note": "this MM<=3 count is a SURROGATE oracle; ConformalGen coverage is w.r.t. this oracle label, not experimentally validated cleavage. This audit quantifies surrogate fidelity; CIRCLE-seq is NOT used in train/calibration."
+  },
+  "circle_seq_audit": {
+    "status": "OK",
+    "source": "I_1_CIRCLE_seq_10gRNA_wholeDataset.csv",
+    "n_pairs": 584949,
+    "n_validated": 7371,
+    "n_nonvalidated": 577578,
+    "n_guides": 80,
+    "roc_auc_mismatch_score": 0.696,
+    "per_guide_mean_auc": 0.681,
+    "per_guide_auc_n": 63,
+    "mean_mm_validated": 4.727,
+    "mean_mm_nonvalidated": 7.001,
+    "sensitivity_at_MM<=3": 0.172,
+    "specificity_at_MM<=3": 0.955,
+    "precision_at_MM<=3": 0.0467,
+    "validated_mm_distribution": {
+      "mm=0": 0,
+      "mm=1": 16,
+      "mm=2": 173,
+      "mm=3": 1078,
+      "mm=4": 1973,
+      "mm=5": 2174,
+      "mm=6": 1705,
+      "mm>=7|validated": 252
+    }
+  },
+  "tsai_validated_audit": {
+    "status": "OK",
+    "source": "tsai_validated_offtargets.tsv",
+    "n_validated_offtargets": 718,
+    "mean_mismatches": 3.447,
+    "median_mismatches": 3,
+    "fraction_captured_at_MM<=3": 0.586,
+    "mismatch_distribution": {
+      "mm=0": 0,
+      "mm=1": 12,
+      "mm=2": 95,
+      "mm=3": 314,
+      "mm=4": 179,
+      "mm=5": 93,
+      "mm=6": 25,
+      "mm=7": 0
+    },
+    "fraction_with_bulge": 0.4136
+  }
+}

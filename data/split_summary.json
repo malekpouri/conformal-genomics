@@ -1,0 +1,108 @@
+{
+  "n_guides_total": 1000,
+  "held_out_chromosome": "chr22",
+  "dropped_chromosomes": [
+    "chrM"
+  ],
+  "max_mismatch": 3,
+  "seed": 42,
+  "split_sizes": {
+    "train": 600,
+    "calibration": 200,
+    "test": 200
+  },
+  "distinct_guides_per_split": {
+    "train": 600,
+    "calibration": 200,
+    "test": 200
+  },
+  "guide_overlap_across_splits": 0,
+  "y_eff": {
+    "n": 1000,
+    "mean": 47.101,
+    "sd": 13.328,
+    "min": 6.66,
+    "median": 48.43,
+    "max": 80.13
+  },
+  "off_id_in_distribution": {
+    "n": 1000,
+    "mean": 26.135,
+    "sd": 65.214,
+    "min": 0.0,
+    "median": 12.0,
+    "max": 1212.0
+  },
+  "off_chr22_OOD": {
+    "n": 1000,
+    "mean": 0.593,
+    "sd": 4.207,
+    "min": 0.0,
+    "median": 0.0,
+    "max": 128.0
+  },
+  "off_id_percentiles": {
+    "p25": 5,
+    "p50": 12,
+    "p75": 25,
+    "p90": 52,
+    "p95": 92
+  },
+  "tau_eff": 50.0,
+  "tau_off_candidate_baseline_floor": 12,
+  "n_in_distribution_chromosomes": 23,
+  "records_per_chromosome_in_distribution": {
+    "chr1": 1000,
+    "chr10": 1000,
+    "chr11": 1000,
+    "chr12": 1000,
+    "chr13": 1000,
+    "chr14": 1000,
+    "chr15": 1000,
+    "chr16": 1000,
+    "chr17": 1000,
+    "chr18": 1000,
+    "chr19": 1000,
+    "chr2": 1000,
+    "chr20": 1000,
+    "chr21": 1000,
+    "chr3": 1000,
+    "chr4": 1000,
+    "chr5": 1000,
+    "chr6": 1000,
+    "chr7": 1000,
+    "chr8": 1000,
+    "chr9": 1000,
+    "chrX": 1000,
+    "chrY": 1000
+  },
+  "long_table_rows": 24000,
+  "calibration_guarantee_slack_1_over_n_plus_1": 0.00498,
+  "exchangeability_ks_tests": {
+    "y_eff:train-vs-calibration": {
+      "ks_stat": 0.0467,
+      "p_value": 0.8924
+    },
+    "y_eff:train-vs-test": {
+      "ks_stat": 0.09,
+      "p_value": 0.1708
+    },
+    "y_eff:calibration-vs-test": {
+      "ks_stat": 0.07,
+      "p_value": 0.7126
+    },
+    "off_id:train-vs-calibration": {
+      "ks_stat": 0.0517,
+      "p_value": 0.8088
+    },
+    "off_id:train-vs-test": {
+      "ks_stat": 0.0733,
+      "p_value": 0.3864
+    },
+    "off_id:calibration-vs-test": {
+      "ks_stat": 0.05,
+      "p_value": 0.9647
+    }
+  },
+  "guide_id_efficacy_calibration_note": "conformal unit is the GUIDE (one record per guide); off_id aggregates genome-minus-chr22 near-matches, off_chr22 is the held-out OOD label. The long per-(guide,chromosome) table is provided for Mondrian/per-chromosome RQ3 analysis (within-guide records are dependent; use guide-level or Mondrian calibration there)."
+}

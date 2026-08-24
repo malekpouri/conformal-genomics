@@ -1,0 +1,2690 @@
+{
+  "config": {
+    "framework": "universal model-agnostic conformal wrapper",
+    "n_gen": 2000,
+    "aligned_tilt": 1.2,
+    "seed": 42,
+    "tau_eff_headline": 50.0,
+    "tau_off_headline": 12.0,
+    "tau_eff_grid": [
+      40.0,
+      45.0,
+      50.0,
+      55.0,
+      60.0
+    ],
+    "tau_off_grid": [
+      5.0,
+      10.0,
+      15.0,
+      20.0,
+      25.0
+    ],
+    "alphas": [
+      0.1,
+      0.05
+    ]
+  },
+  "pool_summary": {
+    "raw_pool": {
+      "n": 200,
+      "eff_mean": 48.438,
+      "eff_pct_ge_50": 48.5,
+      "off_mean": 24.885,
+      "off_median": 14.0
+    },
+    "sft_prior": {
+      "n": 2000,
+      "eff_mean": 48.432,
+      "eff_pct_ge_50": 49.4,
+      "off_mean": 24.642,
+      "off_median": 14.0
+    },
+    "aligned_prior": {
+      "n": 2000,
+      "eff_mean": 58.629,
+      "eff_pct_ge_50": 86.2,
+      "off_mean": 5.632,
+      "off_median": 2.0
+    }
+  },
+  "headline": {
+    "raw_pool": {
+      "alpha=0.1": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 200,
+          "n_accepted": 37,
+          "yield": 0.185,
+          "design_precision": 0.7027027027027027,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 200,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 200,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      },
+      "alpha=0.05": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 200,
+          "n_accepted": 37,
+          "yield": 0.185,
+          "design_precision": 0.7027027027027027,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 200,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 200,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      }
+    },
+    "sft_prior": {
+      "alpha=0.1": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 363,
+          "yield": 0.1815,
+          "design_precision": 0.7052341597796143,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      },
+      "alpha=0.05": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 363,
+          "yield": 0.1815,
+          "design_precision": 0.7052341597796143,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      }
+    },
+    "aligned_prior": {
+      "alpha=0.1": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 1121,
+          "yield": 0.5605,
+          "design_precision": 0.8991971454058876,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.1,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      },
+      "alpha=0.05": {
+        "point": {
+          "mode": "point",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 1121,
+          "yield": 0.5605,
+          "design_precision": 0.8991971454058876,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_directional": {
+          "mode": "conformal_directional",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        "conformal_joint": {
+          "mode": "conformal_joint",
+          "tau_eff": 50.0,
+          "tau_off": 12.0,
+          "alpha": 0.05,
+          "n_candidates": 2000,
+          "n_accepted": 0,
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      }
+    }
+  },
+  "sweep": {
+    "raw_pool": {
+      "alpha=0.1": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.1,
+          "design_precision": 0.8,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.295,
+          "design_precision": 0.711864406779661,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.01,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.44,
+          "design_precision": 0.75,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.045,
+          "design_precision": 0.8888888888888888,
+          "post_selection_bound_coverage": 0.7777777777777778
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.55,
+          "design_precision": 0.7272727272727273,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.075,
+          "design_precision": 0.9333333333333333,
+          "post_selection_bound_coverage": 0.8666666666666667
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.65,
+          "design_precision": 0.7615384615384615,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.115,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.9130434782608695
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.095,
+          "design_precision": 0.6842105263157895,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.235,
+          "design_precision": 0.6595744680851063,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.34,
+          "design_precision": 0.7352941176470589,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.015,
+          "design_precision": 0.6666666666666666,
+          "post_selection_bound_coverage": 0.6666666666666666
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.425,
+          "design_precision": 0.6823529411764706,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.035,
+          "design_precision": 0.8571428571428571,
+          "post_selection_bound_coverage": 0.8571428571428571
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.51,
+          "design_precision": 0.7156862745098039,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.045,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.8888888888888888
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.065,
+          "design_precision": 0.5384615384615384,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.165,
+          "design_precision": 0.6666666666666666,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.225,
+          "design_precision": 0.7777777777777778,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.265,
+          "design_precision": 0.7547169811320755,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.015,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.32,
+          "design_precision": 0.71875,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.015,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.04,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.095,
+          "design_precision": 0.5789473684210527,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.12,
+          "design_precision": 0.7083333333333334,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.135,
+          "design_precision": 0.7037037037037037,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.005,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.16,
+          "design_precision": 0.65625,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.005,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.01,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.025,
+          "design_precision": 0.6,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.035,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.045,
+          "design_precision": 0.7777777777777778,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.005,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.065,
+          "design_precision": 0.6153846153846154,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.005,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        }
+      ],
+      "alpha=0.05": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.1,
+          "design_precision": 0.8,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.295,
+          "design_precision": 0.711864406779661,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.44,
+          "design_precision": 0.75,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.55,
+          "design_precision": 0.7272727272727273,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.015,
+          "design_precision": 0.6666666666666666,
+          "post_selection_bound_coverage": 0.6666666666666666
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.65,
+          "design_precision": 0.7615384615384615,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.035,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.8571428571428571
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.095,
+          "design_precision": 0.6842105263157895,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.235,
+          "design_precision": 0.6595744680851063,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.34,
+          "design_precision": 0.7352941176470589,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.425,
+          "design_precision": 0.6823529411764706,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.51,
+          "design_precision": 0.7156862745098039,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.015,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.065,
+          "design_precision": 0.5384615384615384,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.165,
+          "design_precision": 0.6666666666666666,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.225,
+          "design_precision": 0.7777777777777778,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.265,
+          "design_precision": 0.7547169811320755,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.32,
+          "design_precision": 0.71875,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.04,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.095,
+          "design_precision": 0.5789473684210527,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.12,
+          "design_precision": 0.7083333333333334,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.135,
+          "design_precision": 0.7037037037037037,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.16,
+          "design_precision": 0.65625,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.01,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.025,
+          "design_precision": 0.6,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.035,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.045,
+          "design_precision": 0.7777777777777778,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.065,
+          "design_precision": 0.6153846153846154,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      ]
+    },
+    "sft_prior": {
+      "alpha=0.1": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0995,
+          "design_precision": 0.7688442211055276,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.287,
+          "design_precision": 0.735191637630662,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0085,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.427,
+          "design_precision": 0.7540983606557377,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0435,
+          "design_precision": 0.896551724137931,
+          "post_selection_bound_coverage": 0.8160919540229885
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.54,
+          "design_precision": 0.7175925925925926,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.074,
+          "design_precision": 0.9391891891891891,
+          "post_selection_bound_coverage": 0.8918918918918919
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.645,
+          "design_precision": 0.7542635658914729,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.1095,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.9269406392694064
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0925,
+          "design_precision": 0.6702702702702703,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.229,
+          "design_precision": 0.6812227074235808,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.321,
+          "design_precision": 0.7554517133956387,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0125,
+          "design_precision": 0.64,
+          "post_selection_bound_coverage": 0.64
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.4155,
+          "design_precision": 0.6738868832731648,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0345,
+          "design_precision": 0.8695652173913043,
+          "post_selection_bound_coverage": 0.8695652173913043
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.5025,
+          "design_precision": 0.7154228855721393,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.043,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.8953488372093024
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.066,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.1635,
+          "design_precision": 0.691131498470948,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.2155,
+          "design_precision": 0.7935034802784223,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.2615,
+          "design_precision": 0.7495219885277247,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.014,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.321,
+          "design_precision": 0.7149532710280374,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.014,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0415,
+          "design_precision": 0.46987951807228917,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.099,
+          "design_precision": 0.6111111111111112,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.124,
+          "design_precision": 0.7217741935483871,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.141,
+          "design_precision": 0.6843971631205674,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.006,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.1665,
+          "design_precision": 0.6366366366366366,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.006,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.013,
+          "design_precision": 0.38461538461538464,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.0285,
+          "design_precision": 0.6842105263157895,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.039,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.054,
+          "design_precision": 0.7222222222222222,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.006,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.075,
+          "design_precision": 0.5866666666666667,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.006,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        }
+      ],
+      "alpha=0.05": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0995,
+          "design_precision": 0.7688442211055276,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.287,
+          "design_precision": 0.735191637630662,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.427,
+          "design_precision": 0.7540983606557377,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.54,
+          "design_precision": 0.7175925925925926,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0125,
+          "design_precision": 0.64,
+          "post_selection_bound_coverage": 0.64
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.645,
+          "design_precision": 0.7542635658914729,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.034,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.8676470588235294
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0925,
+          "design_precision": 0.6702702702702703,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.229,
+          "design_precision": 0.6812227074235808,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.321,
+          "design_precision": 0.7554517133956387,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.4155,
+          "design_precision": 0.6738868832731648,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.5025,
+          "design_precision": 0.7154228855721393,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.016,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.066,
+          "design_precision": 0.5,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.1635,
+          "design_precision": 0.691131498470948,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.2155,
+          "design_precision": 0.7935034802784223,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.2615,
+          "design_precision": 0.7495219885277247,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.321,
+          "design_precision": 0.7149532710280374,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.0415,
+          "design_precision": 0.46987951807228917,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.099,
+          "design_precision": 0.6111111111111112,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.124,
+          "design_precision": 0.7217741935483871,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.141,
+          "design_precision": 0.6843971631205674,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.1665,
+          "design_precision": 0.6366366366366366,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.013,
+          "design_precision": 0.38461538461538464,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.0285,
+          "design_precision": 0.6842105263157895,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.039,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.054,
+          "design_precision": 0.7222222222222222,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.075,
+          "design_precision": 0.5866666666666667,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      ]
+    },
+    "aligned_prior": {
+      "alpha=0.1": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.162,
+          "design_precision": 0.9104938271604939,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.583,
+          "design_precision": 0.9228130360205832,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0095,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.8295,
+          "design_precision": 0.976491862567812,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.054,
+          "design_precision": 0.9722222222222222,
+          "post_selection_bound_coverage": 0.9259259259259259
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.878,
+          "design_precision": 0.9715261958997722,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.1235,
+          "design_precision": 0.9878542510121457,
+          "post_selection_bound_coverage": 0.9676113360323887
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.9215,
+          "design_precision": 0.9831795984807379,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.2845,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.9859402460456942
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.1605,
+          "design_precision": 0.7601246105919003,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.5545,
+          "design_precision": 0.872858431018936,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.7945,
+          "design_precision": 0.9421019509125236,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0205,
+          "design_precision": 0.926829268292683,
+          "post_selection_bound_coverage": 0.926829268292683
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.839,
+          "design_precision": 0.933849821215733,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0695,
+          "design_precision": 0.9784172661870504,
+          "post_selection_bound_coverage": 0.9784172661870504
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.882,
+          "design_precision": 0.9450113378684807,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.094,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.9840425531914894
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.111,
+          "design_precision": 0.7387387387387387,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.4405,
+          "design_precision": 0.8728717366628831,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.6105,
+          "design_precision": 0.9451269451269452,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.6435,
+          "design_precision": 0.9440559440559441,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.04,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.6775,
+          "design_precision": 0.9424354243542435,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.04,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.07,
+          "design_precision": 0.6785714285714286,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.2105,
+          "design_precision": 0.7719714964370546,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.273,
+          "design_precision": 0.8864468864468864,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.2825,
+          "design_precision": 0.8920353982300885,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0115,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.3015,
+          "design_precision": 0.8855721393034826,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0115,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.029,
+          "design_precision": 0.6896551724137931,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.063,
+          "design_precision": 0.6825396825396826,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.094,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.0965,
+          "design_precision": 0.9740932642487047,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0115,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.1065,
+          "design_precision": 0.9389671361502347,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0115,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        }
+      ],
+      "alpha=0.05": [
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.162,
+          "design_precision": 0.9104938271604939,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.583,
+          "design_precision": 0.9228130360205832,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.8295,
+          "design_precision": 0.976491862567812,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.878,
+          "design_precision": 0.9715261958997722,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0205,
+          "design_precision": 0.926829268292683,
+          "post_selection_bound_coverage": 0.926829268292683
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.9215,
+          "design_precision": 0.9831795984807379,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 40.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0635,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 0.9763779527559056
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.1605,
+          "design_precision": 0.7601246105919003,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.5545,
+          "design_precision": 0.872858431018936,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.7945,
+          "design_precision": 0.9421019509125236,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.839,
+          "design_precision": 0.933849821215733,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.882,
+          "design_precision": 0.9450113378684807,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 45.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0375,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": 1.0
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.111,
+          "design_precision": 0.7387387387387387,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.4405,
+          "design_precision": 0.8728717366628831,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.6105,
+          "design_precision": 0.9451269451269452,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.6435,
+          "design_precision": 0.9440559440559441,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.6775,
+          "design_precision": 0.9424354243542435,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 50.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.07,
+          "design_precision": 0.6785714285714286,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.2105,
+          "design_precision": 0.7719714964370546,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.273,
+          "design_precision": 0.8864468864468864,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.2825,
+          "design_precision": 0.8920353982300885,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.3015,
+          "design_precision": 0.8855721393034826,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 55.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "point",
+          "yield": 0.029,
+          "design_precision": 0.6896551724137931,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 5.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "point",
+          "yield": 0.063,
+          "design_precision": 0.6825396825396826,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 10.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "point",
+          "yield": 0.094,
+          "design_precision": 1.0,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 15.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "point",
+          "yield": 0.0965,
+          "design_precision": 0.9740932642487047,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 20.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "point",
+          "yield": 0.1065,
+          "design_precision": 0.9389671361502347,
+          "post_selection_bound_coverage": null
+        },
+        {
+          "tau_eff": 60.0,
+          "tau_off": 25.0,
+          "mode": "conformal_directional",
+          "yield": 0.0,
+          "design_precision": null,
+          "post_selection_bound_coverage": null
+        }
+      ]
+    }
+  },
+  "note": "Model-agnostic: the generator is a pluggable GenericSequenceGenerator; pools here (raw_pool / sft_prior / aligned_prior) are standard reference baselines over labelled reservoir guides (real oracle labels). post_selection_bound_coverage = P(y_eff>=L and y_off<=U | accepted); it lower-bounds design_precision by construction. Tilted priors induce covariate shift vs D_cal (weighted conformal, Phase 5, addresses residual coverage drift)."
+}

@@ -1,0 +1,239 @@
+{
+  "config": {
+    "tau_eff": 45.0,
+    "tau_off": 20.0,
+    "mc": 150,
+    "ok_fraction_pop": 0.406,
+    "rho_real_effective": 0.558
+  },
+  "sweep_rho": [
+    {
+      "rho": 0.2,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    },
+    {
+      "rho": 0.4,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    },
+    {
+      "rho": 0.6,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    },
+    {
+      "rho": 0.8,
+      "FAR": 0.0011,
+      "yield": 0.0022,
+      "precision": 0.9714,
+      "power": 0.0055,
+      "n_selected": 0.4467
+    },
+    {
+      "rho": 0.9,
+      "FAR": 0.0045,
+      "yield": 0.0459,
+      "precision": 0.9921,
+      "power": 0.1121,
+      "n_selected": 9.1733
+    },
+    {
+      "rho": 0.95,
+      "FAR": 0.0051,
+      "yield": 0.1365,
+      "precision": 0.9949,
+      "power": 0.334,
+      "n_selected": 27.3067
+    },
+    {
+      "rho": 0.99,
+      "FAR": 0.0021,
+      "yield": 0.2866,
+      "precision": 0.9979,
+      "power": 0.7071,
+      "n_selected": 57.3267
+    },
+    {
+      "rho": 1.0,
+      "FAR": 0.0,
+      "yield": 0.3976,
+      "precision": 1.0,
+      "power": 0.9802,
+      "n_selected": 79.5267
+    }
+  ],
+  "sweep_ncal": [
+    {
+      "n_cal": 100,
+      "FAR": 0.0019,
+      "yield": 0.0127,
+      "precision": 0.983,
+      "power": 0.0307,
+      "n_selected": 2.5467
+    },
+    {
+      "n_cal": 200,
+      "FAR": 0.0035,
+      "yield": 0.047,
+      "precision": 0.9939,
+      "power": 0.1141,
+      "n_selected": 9.4
+    },
+    {
+      "n_cal": 500,
+      "FAR": 0.0066,
+      "yield": 0.063,
+      "precision": 0.9928,
+      "power": 0.1539,
+      "n_selected": 12.6
+    },
+    {
+      "n_cal": 1000,
+      "FAR": 0.0039,
+      "yield": 0.0618,
+      "precision": 0.996,
+      "power": 0.1522,
+      "n_selected": 12.36
+    },
+    {
+      "n_cal": 2000,
+      "FAR": 0.0041,
+      "yield": 0.0651,
+      "precision": 0.9958,
+      "power": 0.1611,
+      "n_selected": 13.02
+    }
+  ],
+  "sweep_m": [
+    {
+      "m": 50,
+      "FAR": 0.0016,
+      "yield": 0.0756,
+      "precision": 0.9982,
+      "power": 0.1813,
+      "n_selected": 3.78
+    },
+    {
+      "m": 100,
+      "FAR": 0.0057,
+      "yield": 0.0679,
+      "precision": 0.9942,
+      "power": 0.1667,
+      "n_selected": 6.7933
+    },
+    {
+      "m": 200,
+      "FAR": 0.0061,
+      "yield": 0.0606,
+      "precision": 0.9938,
+      "power": 0.1483,
+      "n_selected": 12.1133
+    },
+    {
+      "m": 500,
+      "FAR": 0.0038,
+      "yield": 0.0592,
+      "precision": 0.9961,
+      "power": 0.1438,
+      "n_selected": 29.6
+    },
+    {
+      "m": 1000,
+      "FAR": 0.0049,
+      "yield": 0.0596,
+      "precision": 0.995,
+      "power": 0.1455,
+      "n_selected": 59.6467
+    }
+  ],
+  "sweep_q": [
+    {
+      "q": 0.02,
+      "FAR": 0.0003,
+      "yield": 0.0007,
+      "precision": 0.9545,
+      "power": 0.0016,
+      "n_selected": 0.1467
+    },
+    {
+      "q": 0.05,
+      "FAR": 0.0012,
+      "yield": 0.0323,
+      "precision": 0.9978,
+      "power": 0.0783,
+      "n_selected": 6.46
+    },
+    {
+      "q": 0.1,
+      "FAR": 0.0038,
+      "yield": 0.0565,
+      "precision": 0.9955,
+      "power": 0.1374,
+      "n_selected": 11.2933
+    },
+    {
+      "q": 0.2,
+      "FAR": 0.0083,
+      "yield": 0.0948,
+      "precision": 0.9917,
+      "power": 0.232,
+      "n_selected": 18.96
+    },
+    {
+      "q": 0.3,
+      "FAR": 0.0167,
+      "yield": 0.1231,
+      "precision": 0.9833,
+      "power": 0.2988,
+      "n_selected": 24.6133
+    },
+    {
+      "q": 0.5,
+      "FAR": 0.0353,
+      "yield": 0.1752,
+      "precision": 0.9647,
+      "power": 0.4163,
+      "n_selected": 35.0467
+    }
+  ],
+  "real_oracle_ncal_sweep_q0.10": [
+    {
+      "n_cal": 100,
+      "m": 300,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    },
+    {
+      "n_cal": 200,
+      "m": 200,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    },
+    {
+      "n_cal": 300,
+      "m": 100,
+      "FAR": 0.0,
+      "yield": 0.0,
+      "precision": null,
+      "power": 0.0,
+      "n_selected": 0.0
+    }
+  ],
+  "interpretation": "Perfect oracle (rho=1) is the selection-power UPPER BOUND. Power rises with rho, n_cal, and smaller m; FAR stays <= q throughout (validity is unconditional). The real predictor (rho~0.56) sits where power is ~0 even at large n_cal, so the zero real-oracle power is driven by ORACLE WEAKNESS, not by finite calibration size or the cfBH procedure."
+}

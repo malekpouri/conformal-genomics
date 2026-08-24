@@ -1,0 +1,12 @@
+{
+  "hamming_threshold": 4,
+  "n_clusters": 974,
+  "n_non_singleton_clusters": 22,
+  "largest_cluster": 3,
+  "n_guides_in_non_singleton_clusters": 48,
+  "split_sizes": {
+    "train": 600,
+    "calibration": 200,
+    "test": 200
+  }
+}

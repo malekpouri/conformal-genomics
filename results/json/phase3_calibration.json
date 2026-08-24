@@ -1,0 +1,142 @@
+{
+  "alphas": [
+    0.1,
+    0.05
+  ],
+  "n_cal": 200,
+  "n_test": 200,
+  "n_pool_resplit": 400,
+  "n_resplits": 500,
+  "vram_gb": 0.0,
+  "note": "coverage_resplit_mean holds the D_tr-trained predictor fixed and repartitions the D_cal u D_te pool; it estimates E[coverage]. Off-target scores are on the log1p scale (coverage is scale-invariant under the monotone transform).",
+  "results": {
+    "alpha=0.1": {
+      "coverage": {
+        "abs_eff": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.935,
+          "coverage_resplit_mean": 0.8995,
+          "coverage_resplit_sd": 0.0304,
+          "q_fixed": 14.7382
+        },
+        "abs_off": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.915,
+          "coverage_resplit_mean": 0.9019,
+          "coverage_resplit_sd": 0.0283,
+          "q_fixed": 1.3537
+        },
+        "signed_lower_eff": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.94,
+          "coverage_resplit_mean": 0.9011,
+          "coverage_resplit_sd": 0.0303,
+          "q_fixed": 11.5096
+        },
+        "signed_upper_off": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.92,
+          "coverage_resplit_mean": 0.9018,
+          "coverage_resplit_sd": 0.0283,
+          "q_fixed": 1.0208
+        },
+        "cqr_eff": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.92,
+          "coverage_resplit_mean": 0.9019,
+          "coverage_resplit_sd": 0.0283,
+          "q_fixed": 2.4881
+        },
+        "cqr_off": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.905,
+          "coverage_resplit_mean": 0.9042,
+          "coverage_resplit_sd": 0.03,
+          "q_fixed": 0.3531
+        },
+        "mo_joint": {
+          "nominal": 0.9,
+          "coverage_fixed_split": 0.94,
+          "coverage_resplit_mean": 0.9014,
+          "coverage_resplit_sd": 0.0304,
+          "q_fixed": 3.436
+        }
+      },
+      "widths_fixed_split": {
+        "abs_eff_width": 29.476,
+        "abs_off_width_count": 61.592,
+        "signed_lower_eff_slack": 11.51,
+        "signed_lower_eff_mean_L": 36.178,
+        "signed_upper_off_mean_U_count": 46.311,
+        "cqr_eff_width": 30.686,
+        "cqr_off_width_count": 71.827,
+        "mo_eff_mean_L": 32.282,
+        "mo_off_mean_U_count": 89.887
+      }
+    },
+    "alpha=0.05": {
+      "coverage": {
+        "abs_eff": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.975,
+          "coverage_resplit_mean": 0.9509,
+          "coverage_resplit_sd": 0.0219,
+          "q_fixed": 17.7044
+        },
+        "abs_off": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.965,
+          "coverage_resplit_mean": 0.9509,
+          "coverage_resplit_sd": 0.0239,
+          "q_fixed": 1.7742
+        },
+        "signed_lower_eff": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.975,
+          "coverage_resplit_mean": 0.9519,
+          "coverage_resplit_sd": 0.0214,
+          "q_fixed": 15.3711
+        },
+        "signed_upper_off": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.945,
+          "coverage_resplit_mean": 0.9501,
+          "coverage_resplit_sd": 0.0213,
+          "q_fixed": 1.3238
+        },
+        "cqr_eff": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.97,
+          "coverage_resplit_mean": 0.9494,
+          "coverage_resplit_sd": 0.0236,
+          "q_fixed": 3.8978
+        },
+        "cqr_off": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.965,
+          "coverage_resplit_mean": 0.9499,
+          "coverage_resplit_sd": 0.0206,
+          "q_fixed": 0.2619
+        },
+        "mo_joint": {
+          "nominal": 0.95,
+          "coverage_fixed_split": 0.96,
+          "coverage_resplit_mean": 0.9504,
+          "coverage_resplit_sd": 0.0212,
+          "q_fixed": 4.8276
+        }
+      },
+      "widths_fixed_split": {
+        "abs_eff_width": 35.409,
+        "abs_off_width_count": 97.607,
+        "signed_lower_eff_slack": 15.371,
+        "signed_lower_eff_mean_L": 32.317,
+        "signed_upper_off_mean_U_count": 63.051,
+        "cqr_eff_width": 41.266,
+        "cqr_off_width_count": 91.822,
+        "mo_eff_mean_L": 26.042,
+        "mo_off_mean_U_count": 194.726
+      }
+    }
+  }
+}

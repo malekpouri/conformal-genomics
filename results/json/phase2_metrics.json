@@ -1,0 +1,140 @@
+{
+  "alphas": [
+    0.1,
+    0.05
+  ],
+  "n_train": 600,
+  "n_cal": 200,
+  "n_test": 200,
+  "vram_gb": 0.0,
+  "backend": "scikit-learn HistGradientBoosting (CPU)",
+  "predictor_performance": {
+    "efficacy_point": {
+      "rmse": 7.995,
+      "mae": 6.219,
+      "label_sd": 12.054
+    },
+    "offtarget_point": {
+      "rmse_count": 32.028,
+      "mae_count": 14.817,
+      "rmse_log1p": 0.792,
+      "label_sd_count": 36.947
+    },
+    "quantile_pinball": {
+      "alpha=0.1": {
+        "eff_lo(tau=0.050)": 1.137,
+        "eff_hi(tau=0.950)": 0.752,
+        "off_lo(tau=0.050)": 1.208,
+        "off_hi(tau=0.950)": 5.871
+      },
+      "alpha=0.05": {
+        "eff_lo(tau=0.025)": 0.683,
+        "eff_hi(tau=0.975)": 0.458,
+        "off_lo(tau=0.025)": 0.618,
+        "off_hi(tau=0.975)": 4.207
+      }
+    },
+    "quantile_crossing_rate": {
+      "alpha=0.1": {
+        "eff": 0.0,
+        "off": 0.0
+      },
+      "alpha=0.05": {
+        "eff": 0.0,
+        "off": 0.0
+      }
+    }
+  },
+  "score_dispersion_on_calibration": {
+    "abs_eff": {
+      "n": 200,
+      "mean": 6.7039,
+      "sd": 5.3401,
+      "min": 0.0761,
+      "median": 5.2911,
+      "max": 25.4042
+    },
+    "abs_off_log1p": {
+      "n": 200,
+      "mean": 0.6578,
+      "sd": 0.5616,
+      "min": 0.0025,
+      "median": 0.5021,
+      "max": 3.8771
+    },
+    "signed_lower_eff": {
+      "n": 200,
+      "mean": -0.5296,
+      "sd": 8.5676,
+      "min": -24.3961,
+      "median": -1.5218,
+      "max": 25.4042
+    },
+    "signed_upper_off_log1p": {
+      "n": 200,
+      "mean": -0.0253,
+      "sd": 0.8658,
+      "min": -2.8478,
+      "median": -0.0518,
+      "max": 3.8771
+    },
+    "mo_joint": {
+      "n": 200,
+      "mean": 1.1811,
+      "sd": 2.2058,
+      "min": -2.7962,
+      "median": 0.798,
+      "max": 15.3461
+    },
+    "cqr": {
+      "alpha=0.1": {
+        "cqr_eff": {
+          "n": 200,
+          "mean": -5.1805,
+          "sd": 6.1384,
+          "min": -17.8444,
+          "median": -5.6983,
+          "max": 18.2018
+        },
+        "cqr_off_log1p": {
+          "n": 200,
+          "mean": -0.5542,
+          "sd": 0.6645,
+          "min": -1.9915,
+          "median": -0.6367,
+          "max": 2.302
+        }
+      },
+      "alpha=0.05": {
+        "cqr_eff": {
+          "n": 200,
+          "mean": -7.9009,
+          "sd": 6.5562,
+          "min": -20.3867,
+          "median": -8.7137,
+          "max": 15.9507
+        },
+        "cqr_off_log1p": {
+          "n": 200,
+          "mean": -1.0541,
+          "sd": 0.7119,
+          "min": -2.3979,
+          "median": -1.0986,
+          "max": 2.4903
+        }
+      }
+    }
+  },
+  "illustrative_calibrated_quantiles": {
+    "alpha=0.1": {
+      "q_signed_lower_eff": 11.5096,
+      "q_signed_upper_off_log1p": 1.0208,
+      "q_mo_joint": 3.436
+    },
+    "alpha=0.05": {
+      "q_signed_lower_eff": 15.3711,
+      "q_signed_upper_off_log1p": 1.3238,
+      "q_mo_joint": 4.8276
+    }
+  }
+}

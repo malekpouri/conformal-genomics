@@ -1,0 +1,580 @@
+{
+  "config": {
+    "tau_eff": 50.0,
+    "tau_off": 12.0,
+    "alphas": [
+      0.1,
+      0.05
+    ],
+    "far_levels": [
+      0.05,
+      0.1
+    ],
+    "bootstrap_B": 2000,
+    "vram_gb": 0.0
+  },
+  "predictor_metrics": {
+    "efficacy": {
+      "RMSE": 7.995,
+      "MAE": 6.219,
+      "R2": 0.558,
+      "Spearman": 0.763,
+      "label_sd": 12.054
+    },
+    "offtarget": {
+      "logRMSE": 0.792,
+      "countRMSE": 32.03,
+      "Spearman": 0.74,
+      "AUC(off>12)": 0.831
+    }
+  },
+  "interval_baselines": {
+    "alpha=0.1": {
+      "efficacy": [
+        {
+          "method": "uncalibrated_QR",
+          "coverage": 0.86,
+          "width": 25.710062742753934
+        },
+        {
+          "method": "parametric_Gaussian",
+          "coverage": 0.67,
+          "width": 14.749833079929076
+        },
+        {
+          "method": "standard_split_CP",
+          "coverage": 0.935,
+          "width": 29.476317830931777,
+          "q": 14.738158915465888
+        }
+      ],
+      "offtarget": [
+        {
+          "method": "uncalibrated_QR",
+          "coverage": 0.835,
+          "width": 48.7730376552871,
+          "scale": "count"
+        },
+        {
+          "method": "parametric_Gaussian",
+          "coverage": 0.61,
+          "width": 28.092429151520218,
+          "scale": "count"
+        },
+        {
+          "method": "standard_split_CP",
+          "coverage": 0.915,
+          "width": 61.57708631566664,
+          "q": 1.3536527834246532,
+          "scale": "count"
+        }
+      ]
+    },
+    "alpha=0.05": {
+      "efficacy": [
+        {
+          "method": "uncalibrated_QR",
+          "coverage": 0.91,
+          "width": 33.47031637013445
+        },
+        {
+          "method": "parametric_Gaussian",
+          "coverage": 0.745,
+          "width": 17.5755101493243
+        },
+        {
+          "method": "standard_split_CP",
+          "coverage": 0.975,
+          "width": 35.408707792080925,
+          "q": 17.704353896040466
+        }
+      ],
+      "offtarget": [
+        {
+          "method": "uncalibrated_QR",
+          "coverage": 0.935,
+          "width": 70.3655154288294,
+          "scale": "count"
+        },
+        {
+          "method": "parametric_Gaussian",
+          "coverage": 0.71,
+          "width": 35.19225043171081,
+          "scale": "count"
+        },
+        {
+          "method": "standard_split_CP",
+          "coverage": 0.965,
+          "width": 97.5719788718777,
+          "q": 1.7742203602889282,
+          "scale": "count"
+        }
+      ]
+    }
+  },
+  "score_family_ablation": {
+    "alpha=0.1": {
+      "absolute_eff": {
+        "split_cp": {
+          "coverage": 0.935,
+          "ci95": [
+            0.895,
+            0.9651
+          ],
+          "width": 29.476
+        },
+        "mondrian": {
+          "coverage": 0.945,
+          "ci95": [
+            0.91,
+            0.975
+          ],
+          "width": 29.247
+        }
+      },
+      "directional_eff": {
+        "split_cp": {
+          "coverage": 0.94,
+          "ci95": [
+            0.905,
+            0.97
+          ],
+          "slack": 11.51
+        }
+      },
+      "directional_off": {
+        "split_cp": {
+          "coverage": 0.92,
+          "ci95": [
+            0.88,
+            0.955
+          ],
+          "meanU_count": 46.31
+        },
+        "mondrian": {
+          "coverage": 0.91,
+          "ci95": [
+            0.87,
+            0.945
+          ],
+          "meanU_count": 50.84
+        }
+      },
+      "cqr_eff": {
+        "split_cp": {
+          "coverage": 0.92,
+          "ci95": [
+            0.88,
+            0.955
+          ],
+          "width": 30.686
+        }
+      },
+      "cqr_off": {
+        "split_cp": {
+          "coverage": 0.905,
+          "ci95": [
+            0.865,
+            0.945
+          ],
+          "width_count": 71.83
+        }
+      },
+      "joint_infnorm": {
+        "split_cp": {
+          "coverage": 0.94,
+          "ci95": [
+            0.905,
+            0.97
+          ],
+          "eff_meanL": 32.28,
+          "off_meanU_count": 89.89
+        },
+        "mondrian": {
+          "coverage": 0.95,
+          "ci95": [
+            0.915,
+            0.98
+          ],
+          "eff_meanL": 30.0,
+          "off_meanU_count": 152.94
+        }
+      }
+    },
+    "alpha=0.05": {
+      "absolute_eff": {
+        "split_cp": {
+          "coverage": 0.975,
+          "ci95": [
+            0.95,
+            0.995
+          ],
+          "width": 35.409
+        },
+        "mondrian": {
+          "coverage": 0.965,
+          "ci95": [
+            0.935,
+            0.99
+          ],
+          "width": 34.19
+        }
+      },
+      "directional_eff": {
+        "split_cp": {
+          "coverage": 0.975,
+          "ci95": [
+            0.95,
+            0.995
+          ],
+          "slack": 15.371
+        }
+      },
+      "directional_off": {
+        "split_cp": {
+          "coverage": 0.945,
+          "ci95": [
+            0.91,
+            0.975
+          ],
+          "meanU_count": 63.05
+        },
+        "mondrian": {
+          "coverage": 0.965,
+          "ci95": [
+            0.94,
+            0.99
+          ],
+          "meanU_count": 68.85
+        }
+      },
+      "cqr_eff": {
+        "split_cp": {
+          "coverage": 0.97,
+          "ci95": [
+            0.945,
+            0.99
+          ],
+          "width": 41.266
+        }
+      },
+      "cqr_off": {
+        "split_cp": {
+          "coverage": 0.965,
+          "ci95": [
+            0.9399,
+            0.9851
+          ],
+          "width_count": 91.82
+        }
+      },
+      "joint_infnorm": {
+        "split_cp": {
+          "coverage": 0.96,
+          "ci95": [
+            0.93,
+            0.985
+          ],
+          "eff_meanL": 26.04,
+          "off_meanU_count": 194.73
+        },
+        "mondrian": {
+          "coverage": 0.97,
+          "ci95": [
+            0.945,
+            0.99
+          ],
+          "eff_meanL": 24.27,
+          "off_meanU_count": 260.56
+        }
+      }
+    }
+  },
+  "weighted_conformal_generative_shift": {
+    "alpha=0.1": {
+      "plain": {
+        "coverage": 0.9925,
+        "ci95": [
+          0.9885,
+          0.996
+        ],
+        "pct_finite_bound": 1.0,
+        "medianU_count_finite": 25.054,
+        "meanU_count_finite": 28.579
+      },
+      "weighted": {
+        "coverage": 0.9425,
+        "ci95": [
+          0.932,
+          0.952
+        ],
+        "pct_finite_bound": 0.959,
+        "medianU_count_finite": 21.979,
+        "meanU_count_finite": 22.476
+      },
+      "coverage_delta_ci": {
+        "delta": -0.050000000000000044,
+        "lo": -0.059512499999999975,
+        "hi": -0.04098750000000011
+      }
+    },
+    "alpha=0.05": {
+      "plain": {
+        "coverage": 0.996,
+        "ci95": [
+          0.993,
+          0.9985
+        ],
+        "pct_finite_bound": 1.0,
+        "medianU_count_finite": 34.272,
+        "meanU_count_finite": 39.045
+      },
+      "weighted": {
+        "coverage": 0.9895,
+        "ci95": [
+          0.985,
+          0.994
+        ],
+        "pct_finite_bound": 0.599,
+        "medianU_count_finite": 37.664,
+        "meanU_count_finite": 40.689
+      },
+      "coverage_delta_ci": {
+        "delta": -0.00649999999999995,
+        "lo": -0.010000000000000009,
+        "hi": -0.0030000000000000027
+      }
+    },
+    "density_ratio": {
+      "ess": 23.3,
+      "clf_acc": 0.925,
+      "note": "strong shift (clf acc ~0.93) => low ESS => some weighted bounds are unbounded (q=+inf); reported via pct_finite_bound. Matches R1 Thm-4 honesty clause: weighted CP degrades as the density ratio grows extreme.",
+      "sensitivity_over_C": {
+        "C=0.1": {
+          "ess": 34.1,
+          "w_mean": 0.773,
+          "w_max": 14.493,
+          "clf_acc": 0.92
+        },
+        "C=1.0": {
+          "ess": 23.3,
+          "w_mean": 0.842,
+          "w_max": 23.17,
+          "clf_acc": 0.925
+        },
+        "C=10.0": {
+          "ess": 18.5,
+          "w_mean": 0.916,
+          "w_max": 33.739,
+          "clf_acc": 0.93
+        }
+      }
+    }
+  },
+  "leakage_standard_vs_grouped": {
+    "standard_guide_level": {
+      "alpha=0.1": {
+        "directional_eff": {
+          "coverage": 0.94,
+          "ci95": [
+            0.905,
+            0.97
+          ]
+        },
+        "directional_off": {
+          "coverage": 0.92,
+          "ci95": [
+            0.88,
+            0.955
+          ]
+        }
+      },
+      "alpha=0.05": {
+        "directional_eff": {
+          "coverage": 0.975,
+          "ci95": [
+            0.95,
+            0.995
+          ]
+        },
+        "directional_off": {
+          "coverage": 0.945,
+          "ci95": [
+            0.91,
+            0.975
+          ]
+        }
+      }
+    },
+    "sequence_cluster_grouped": {
+      "alpha=0.1": {
+        "directional_eff": {
+          "coverage": 0.85,
+          "ci95": [
+            0.8,
+            0.9
+          ]
+        },
+        "directional_off": {
+          "coverage": 0.95,
+          "ci95": [
+            0.915,
+            0.975
+          ]
+        }
+      },
+      "alpha=0.05": {
+        "directional_eff": {
+          "coverage": 0.925,
+          "ci95": [
+            0.885,
+            0.96
+          ]
+        },
+        "directional_off": {
+          "coverage": 0.985,
+          "ci95": [
+            0.965,
+            1.0
+          ]
+        }
+      }
+    }
+  },
+  "conformal_selection_cfBH": {
+    "thresholds": {
+      "tau_eff": 45.0,
+      "tau_off": 20.0
+    },
+    "n_resplits": 300,
+    "q_grid": [
+      {
+        "q": 0.02,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.05,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.1,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.15,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.2,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.3,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.4,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      {
+        "q": 0.5,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      }
+    ],
+    "levels": {
+      "q=0.05": {
+        "q": 0.05,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      },
+      "q=0.1": {
+        "q": 0.1,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_yield": 0.0,
+        "mean_precision": NaN,
+        "mean_power": 0.0
+      }
+    },
+    "shifted_negative_control_q0.10": {
+      "empirical_FAR": 0.0,
+      "yield": 0.0,
+      "note": "exchangeability broken -> FAR control not guaranteed"
+    }
+  }
+}
