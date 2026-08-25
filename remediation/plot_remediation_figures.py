@@ -88,8 +88,41 @@ def figR3():
     plt.close(fig)
 
 
+# ── figR4: deployment regime — cfBH vs naive; enumerated vs sequence-only ──
+def figR4():
+    d = json.loads((PROJECT / "results" / "json" / "deployment_benchmarks.json").read_text())
+    sw = d["stringency_sweep"]
+    strat = ["p10_strict", "p25", "p50_median"]; x = np.arange(len(strat)); w = 0.35
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(12, 4.4))
+    powE = [sw["assay_enumerated"][s]["q=0.1"]["cfbh_power"] for s in strat]
+    powS = [sw["sequence_only"][s]["q=0.1"]["cfbh_power"] for s in strat]
+    axL.bar(x - w/2, powE, w, label="alignment-enumerated oracle (ρ=0.94)", color=C["a"])
+    axL.bar(x + w/2, powS, w, label="sequence-only oracle (ρ≈0)", color=C["c"])
+    axL.set_xticks(x); axL.set_xticklabels(["p10\n(strict)", "p25", "p50\n(median)"])
+    axL.set_ylabel("cfBH power (recall of safe)"); axL.set_ylim(0, 1)
+    axL.set_title("cfBH power collapses without alignment (q=0.10)")
+    axL.legend(fontsize=8); axL.grid(axis="y", alpha=0.25)
+    # right: FAR — cfBH (certified) vs naive fixed-cutoff (uncontrolled)
+    regimes = [("assay_enumerated", "p25", "enum p25"), ("assay_enumerated", "p50_median", "enum p50"),
+               ("sequence_only", "p50_median", "seq-only p50")]
+    cf = [sw[o][s]["q=0.1"]["cfbh_FAR"] for o, s, _ in regimes]
+    nv = [sw[o][s]["q=0.1"]["naive_fixedcut_FAR"] for o, s, _ in regimes]
+    xr = np.arange(len(regimes))
+    axR.bar(xr - w/2, cf, w, label="cfBH (certified)", color=C["b"])
+    axR.bar(xr + w/2, nv, w, label="naive fixed-cutoff", color=C["g"])
+    axR.axhline(0.10, color=C["n"], ls="--", lw=1.2, label="q = 0.10")
+    for i, v in enumerate(nv):
+        axR.text(xr[i]+w/2, v+0.01, f"{v:.2f}", ha="center", fontsize=9)
+    axR.set_xticks(xr); axR.set_xticklabels([r[2] for r in regimes]); axR.set_ylim(0, 0.6)
+    axR.set_ylabel("empirical FAR"); axR.set_title("cfBH certifies FAR≤q; the heuristic is uncontrolled")
+    axR.legend(fontsize=8); axR.grid(axis="y", alpha=0.25)
+    fig.suptitle("Deployment regime: cfBH fails safe; off-target burden needs alignment", fontweight="bold")
+    fig.tight_layout(); fig.savefig(FIG / "figR4_deployment.png", dpi=DPI, bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
-    figR1(); figR2(); figR3()
-    for f in ("figR1_validated_offtarget_cfbh", "figR2_uq_baselines", "figR3_transfer_shift"):
+    figR1(); figR2(); figR3(); figR4()
+    for f in ("figR1_validated_offtarget_cfbh", "figR2_uq_baselines", "figR3_transfer_shift", "figR4_deployment"):
         p = FIG / f"{f}.png"
         print(f"wrote {p.relative_to(PROJECT)} ({p.stat().st_size//1024} KB)")

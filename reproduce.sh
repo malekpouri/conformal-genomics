@@ -60,6 +60,7 @@ if [ -n "$have_val" ]; then
   run "R3  Real generator + multi-objective"      "$PY" remediation/phase3_generator_multiobjective.py
   run "R4  Honest design (leakage/OOD/baselines)" "$PY" remediation/phase4_honest_design.py
   run "R5  Synthesis + A/B verdict"               "$PY" remediation/phase5_synthesis.py
+  run "R7  Deployment benchmarks + baseline"      "$PY" remediation/phase7_deployment.py
   run "R6  Remediation figures (300 DPI)"         "$PY" remediation/plot_remediation_figures.py
 else
   echo; echo "========== REMEDIATION (SKIPPED) =========="

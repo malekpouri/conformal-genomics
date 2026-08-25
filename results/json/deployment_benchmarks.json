@@ -1,0 +1,332 @@
+{
+  "cohort": {
+    "n_guides": 80,
+    "source": "CIRCLE-seq validated burden"
+  },
+  "oracle_fidelity": {
+    "assay_enumerated_rho": 0.944,
+    "sequence_only_rho": -0.057,
+    "classifier_roc_auc": 0.925,
+    "classifier_avg_precision": 0.281
+  },
+  "stringency_sweep": {
+    "assay_enumerated": {
+      "p10_strict": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.212,
+          "tau": 0.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.212,
+          "tau": 0.0
+        }
+      },
+      "p25": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.2727,
+          "naive_fixedcut_yield": 0.275,
+          "ok_fraction": 0.275,
+          "tau": 2.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.2727,
+          "naive_fixedcut_yield": 0.275,
+          "ok_fraction": 0.275,
+          "tau": 2.0
+        }
+      },
+      "p50_median": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0005,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.5475,
+          "cfbh_power_ci95": [
+            0.0,
+            0.9333
+          ],
+          "cfbh_precision": 0.9994,
+          "cfbh_yield": 0.2901,
+          "naive_matched_yield_FAR": 0.0005,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0256,
+          "naive_fixedcut_yield": 0.4875,
+          "ok_fraction": 0.512,
+          "tau": 17.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0101,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0769
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.8078,
+          "cfbh_power_ci95": [
+            0.5455,
+            1.0
+          ],
+          "cfbh_precision": 0.9898,
+          "cfbh_yield": 0.4251,
+          "naive_matched_yield_FAR": 0.0101,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0769
+          ],
+          "naive_fixedcut_FAR": 0.0256,
+          "naive_fixedcut_yield": 0.4875,
+          "ok_fraction": 0.512,
+          "tau": 17.0
+        }
+      }
+    },
+    "sequence_only": {
+      "p10_strict": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.212,
+          "tau": 0.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.212,
+          "tau": 0.0
+        }
+      },
+      "p25": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.275,
+          "tau": 2.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.0,
+          "naive_fixedcut_yield": 0.0,
+          "ok_fraction": 0.275,
+          "tau": 2.0
+        }
+      },
+      "p50_median": {
+        "q=0.1": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.5217,
+          "naive_fixedcut_yield": 0.575,
+          "ok_fraction": 0.512,
+          "tau": 17.0
+        },
+        "q=0.2": {
+          "cfbh_FAR": 0.0,
+          "cfbh_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_FAR_le_q": true,
+          "cfbh_power": 0.0,
+          "cfbh_power_ci95": [
+            0.0,
+            0.0
+          ],
+          "cfbh_precision": NaN,
+          "cfbh_yield": 0.0,
+          "naive_matched_yield_FAR": 0.0,
+          "naive_matched_yield_FAR_ci95": [
+            0.0,
+            0.0
+          ],
+          "naive_fixedcut_FAR": 0.5217,
+          "naive_fixedcut_yield": 0.575,
+          "ok_fraction": 0.512,
+          "tau": 17.0
+        }
+      }
+    }
+  },
+  "generator_selection_loop": {
+    "n_generated": 2000,
+    "novel_frac": 1.0,
+    "gen_entropy_bits": 1.924,
+    "cfbh_accept_rate_q0.10": 0.0,
+    "accepted_entropy_bits": null,
+    "note": "Accepted candidates are cfBH-certified at q=0.10 w.r.t. the validated-burden oracle; FAR on novel guides is NOT directly measurable (no assay truth) -- the certificate is what q provides. Calibrated on 80 CIRCLE-seq guides."
+  },
+  "interpretation": {
+    "sequence_only_unpredictable": "Total off-target burden is NOT inferable from the 20-mer alone (rho=-0.057 ~ 0): it depends on the guide's genome-wide near-match landscape, which requires alignment. cfBH correctly FAILS SAFE here -- selects nothing (power 0, FAR 0) -- whereas the naive fixed-cutoff heuristic accepts ~57% with empirical FAR 0.52.",
+    "deployment_path": "The working regime enumerates candidate off-target sites (via genome alignment, e.g. Cas-OFFinder -- a standard computation, not an assay) and scores them with the CIRCLE-trained per-site classifier (ROC-AUC 0.925). In that regime the per-guide burden oracle reaches rho=0.944 and cfBH attains power 0.55 (median threshold). The realistic pipeline is generate -> align -> score -> cfBH.",
+    "cfbh_value": "cfBH's contribution is a fail-safe finite-sample certificate: it selects the same guides as rank-and-cutoff at matched yield, but its FAR is guaranteed <=q, while the fixed-cutoff heuristic's empirical FAR is uncontrolled (0.27 at strict assay thresholds, 0.52 sequence-only) and can badly exceed any target.",
+    "small_cohort_caveat": "Strict thresholds (p10/p25) give ~2-3 OK guides per 27-guide test split, so power is ~0 there partly from the 80-guide cohort size, not only the oracle."
+  }
+}
