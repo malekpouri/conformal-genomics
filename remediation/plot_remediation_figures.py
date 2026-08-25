@@ -153,30 +153,32 @@ def figR5():
     plt.close(fig)
 
 
-# ── figR6: external cross-assay replication — the oracle does not transfer ──
+# ── figR6: (a) zero-shot cross-assay collapse; (b) in-assay recovery with cohort size ──
 def figR6():
     d = json.loads((PROJECT / "results" / "json" / "external_replication.json").read_text())
-    rows = [("CIRCLE-seq\n(in-assay)", 0.925, 0.944, C["b"]),
-            ("SITE-Seq\n(cross-assay)", d["cross_assay_oracle_SITEseq"]["pair_roc_auc"],
-             d["cross_assay_oracle_SITEseq"]["per_guide_burden_rho"], C["c"]),
-            ("GUIDE-seq\n(cross-assay)", d["cross_assay_oracle_GUIDEseq"]["pair_roc_auc"],
-             d["cross_assay_oracle_GUIDEseq"]["per_guide_burden_rho"], C["c"])]
     fig, (axL, axR) = plt.subplots(1, 2, figsize=(12, 4.4))
-    labs = [r[0] for r in rows]; cols = [r[3] for r in rows]
-    axL.bar(labs, [r[1] for r in rows], color=cols)
+    # (a) collapse: pair AUC in-assay vs cross-assay
+    rows = [("CIRCLE\n(in-assay)", 0.925, C["b"]),
+            ("SITE-Seq\n(cross)", d["cross_assay_oracle_SITEseq"]["pair_roc_auc"], C["c"]),
+            ("GUIDE-seq\n(cross)", d["cross_assay_oracle_GUIDEseq"]["pair_roc_auc"], C["c"])]
+    axL.bar([r[0] for r in rows], [r[1] for r in rows], color=[r[2] for r in rows])
     for i, r in enumerate(rows):
         axL.text(i, r[1] + 0.01, f"{r[1]:.3f}", ha="center", fontsize=10)
     axL.axhline(0.5, color=C["n"], ls=":", lw=1, label="chance"); axL.set_ylim(0.4, 1.0)
-    axL.set_ylabel("pair ROC-AUC"); axL.set_title("Off-target oracle: strong in-assay, weak cross-assay")
+    axL.set_ylabel("pair ROC-AUC"); axL.set_title("(a) zero-shot cross-assay collapse")
     axL.legend(fontsize=8); axL.grid(axis="y", alpha=0.25)
-    axR.bar(labs, [r[2] for r in rows], color=cols)
-    for i, r in enumerate(rows):
-        axR.text(i, r[2] + 0.01, f"{r[2]:.3f}", ha="center", fontsize=10)
-    axR.axhline(0.0, color=C["n"], lw=0.8); axR.set_ylim(-0.05, 1.0)
-    axR.set_ylabel("per-guide burden fidelity ρ"); axR.set_title("Fidelity collapses across assays")
-    axR.grid(axis="y", alpha=0.25)
-    fig.suptitle("External replication: the oracle is assay-specific (cfBH still fails safe, FAR ≤ q)",
-                 fontweight="bold")
+    # (b) recovery: cfBH power vs in-assay validated cohort size (CIRCLE sweep)
+    sw = d["local_recalibration"]["circle_in_assay_cohort_size_sweep_q0.10"]
+    ng = [r["n_guides"] for r in sw]; pw = [r["mean_power_q0.10"] for r in sw]
+    axR.plot(ng, pw, "o-", color=C["b"], lw=2, ms=7, label="cfBH power (q=0.10)")
+    for x, yv in zip(ng, pw):
+        axR.text(x, yv + 0.02, f"{yv:.2f}", ha="center", fontsize=9)
+    axR.axvspan(9, 22, color=C["c"], alpha=0.12, label="available external cohorts (9–22)")
+    axR.set_xlabel("in-assay validated cohort size (# guides)"); axR.set_ylabel("cfBH power")
+    axR.set_ylim(0, 0.7); axR.set_title("(b) in-assay recovery with cohort size")
+    axR.legend(fontsize=8); axR.grid(alpha=0.25)
+    fig.suptitle("Calibrate-locally: the oracle is assay-specific; power recovers with an adequate "
+                 "in-assay cohort (cfBH FAR ≤ q throughout)", fontweight="bold")
     fig.tight_layout(); fig.savefig(FIG / "figR6_external_replication.png", dpi=DPI, bbox_inches="tight")
     plt.close(fig)
 

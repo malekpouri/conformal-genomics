@@ -60,5 +60,95 @@
     "power_q0.10": 0.584,
     "power_q0.20": 0.796
   },
-  "note": "Trained-from-scratch oracles fail on GUIDE-seq (56 positives -> chance); cross-assay transfer of the CIRCLE-calibrated mismatch->cleavage oracle is the valid external test. cfBH FAR<=q holds on the independent cohort by construction."
+  "note": "Trained-from-scratch oracles fail on GUIDE-seq (56 positives -> chance); cross-assay transfer of the CIRCLE-calibrated mismatch->cleavage oracle is the valid external test. cfBH FAR<=q holds on the independent cohort by construction.",
+  "local_recalibration": {
+    "design": "in-assay leave-one-guide-out recalibration of the burden oracle (features = per-guide mismatch-bin counts) vs zero-shot foreign oracle; cfBH FAR<=q throughout.",
+    "by_assay": {
+      "GUIDE-seq": {
+        "n_guides": 22,
+        "n_validated": 56,
+        "rho_zero_shot": 0.196,
+        "rho_in_assay_recal": 0.183,
+        "cfbh": {
+          "q=0.1": {
+            "zero_shot": {
+              "mean_FAR": 0.0,
+              "FAR_ci95": [
+                0.0,
+                0.0
+              ],
+              "FAR_le_q": true,
+              "mean_power": 0.0,
+              "n_cal": 15,
+              "n_test": 7
+            },
+            "in_assay_recal": {
+              "mean_FAR": 0.0,
+              "FAR_ci95": [
+                0.0,
+                0.0
+              ],
+              "FAR_le_q": true,
+              "mean_power": 0.0,
+              "n_cal": 15,
+              "n_test": 7
+            }
+          },
+          "q=0.2": {
+            "zero_shot": {
+              "mean_FAR": 0.0,
+              "FAR_ci95": [
+                0.0,
+                0.0
+              ],
+              "FAR_le_q": true,
+              "mean_power": 0.0,
+              "n_cal": 15,
+              "n_test": 7
+            },
+            "in_assay_recal": {
+              "mean_FAR": 0.0,
+              "FAR_ci95": [
+                0.0,
+                0.0
+              ],
+              "FAR_le_q": true,
+              "mean_power": 0.0,
+              "n_cal": 15,
+              "n_test": 7
+            }
+          }
+        }
+      },
+      "SITE-Seq": {
+        "n_guides": 9,
+        "n_validated": 3767,
+        "rho_zero_shot": 0.7,
+        "rho_in_assay_recal": -0.167
+      }
+    },
+    "circle_in_assay_cohort_size_sweep_q0.10": [
+      {
+        "n_guides": 10,
+        "mean_power_q0.10": 0.0
+      },
+      {
+        "n_guides": 20,
+        "mean_power_q0.10": 0.05
+      },
+      {
+        "n_guides": 40,
+        "mean_power_q0.10": 0.255
+      },
+      {
+        "n_guides": 60,
+        "mean_power_q0.10": 0.437
+      },
+      {
+        "n_guides": 80,
+        "mean_power_q0.10": 0.578
+      }
+    ],
+    "verdict": "On the small independent cohorts (9-22 guides) neither zero-shot transfer nor in-assay recalibration restores cfBH power -- there are too few validated guides to refit a better oracle or to resolve power. The CIRCLE-seq cohort-size sweep shows power rises with in-assay cohort size (emerging by ~40-80 guides). The actionable protocol is therefore: recalibrate IN-ASSAY on an adequately-sized validated cohort (~80 guides); cfBH's FAR<=q / fail-safe certificate holds at every cohort size regardless."
+  }
 }
