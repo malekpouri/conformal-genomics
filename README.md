@@ -118,6 +118,7 @@ fresh clone reproduces from Stage 02 onward; stages needing the large, non-redis
 | **Baselines** | deep ensemble (0.02) and MC-dropout (0.54) miscalibrate at nominal 0.90; **conformalizing the same ensemble → 0.91 (exact)** |
 | **Deployment & fail-safe** | off-target burden needs **alignment-enumerated** sites (ρ 0.94; **ρ 0.879 in the Cas-OFFinder mm≤3 regime**); from sequence alone ρ ≈ 0 → cfBH **fails safe** (selects nothing) rather than falsely accepting |
 | **Certificate vs tuning** | a calibration-**tuned** threshold violates FAR ≤ q on **36–42% of deployments** (p95 FAR 0.27–0.39); cfBH's distribution-free certificate never does |
+| **External replication** | the CIRCLE-trained oracle does **not transfer** across assays (pair AUC 0.55–0.68 on SITE-Seq/GUIDE-seq vs 0.925 in-assay) → recalibrate in-assay; cfBH still fails safe (FAR ≤ q) |
 | **Honest limits** | indel-efficacy oracle caps at Spearman ≤ 0.78 → efficacy/joint cfBH power ≈ 0; coverage does **not** transfer across nuclease/cell-line |
 
 ## Repository layout

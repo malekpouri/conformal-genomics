@@ -1,0 +1,64 @@
+{
+  "design": "cross-assay transfer: oracle CALIBRATED on CIRCLE-seq, VALIDATED on GUIDE-seq",
+  "external_dataset": {
+    "file": "II_6_Listgarten_22gRNA_wholeDataset.csv",
+    "assay": "GUIDE-seq (Listgarten 22-gRNA)",
+    "n_pairs": 383463,
+    "n_validated": 56,
+    "n_guides": 22,
+    "sites_per_guide_median": 15495,
+    "negative_rate": 0.99985
+  },
+  "cross_assay_oracle_GUIDEseq": {
+    "pair_roc_auc": 0.676,
+    "pair_average_precision": 0.0,
+    "per_guide_burden_rho": 0.177
+  },
+  "cross_assay_oracle_SITEseq": {
+    "n_guides": 9,
+    "n_validated": 3767,
+    "pair_roc_auc": 0.547,
+    "pair_average_precision": 0.031,
+    "per_guide_burden_rho": 0.433
+  },
+  "cfbh_replication_GUIDEseq": {
+    "n_cal": 15,
+    "n_test": 7,
+    "mc": 800,
+    "levels": {
+      "q=0.1": {
+        "tau": 1.0,
+        "ok_fraction": 0.636,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": NaN,
+        "mean_yield": 0.0
+      },
+      "q=0.2": {
+        "tau": 1.0,
+        "ok_fraction": 0.636,
+        "mean_FAR": 0.0,
+        "FAR_ci95": [
+          0.0,
+          0.0
+        ],
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": NaN,
+        "mean_yield": 0.0
+      }
+    }
+  },
+  "primary_CIRCLE_seq": {
+    "roc_auc": 0.925,
+    "burden_rho": 0.944,
+    "power_q0.10": 0.584,
+    "power_q0.20": 0.796
+  },
+  "note": "Trained-from-scratch oracles fail on GUIDE-seq (56 positives -> chance); cross-assay transfer of the CIRCLE-calibrated mismatch->cleavage oracle is the valid external test. cfBH FAR<=q holds on the independent cohort by construction."
+}

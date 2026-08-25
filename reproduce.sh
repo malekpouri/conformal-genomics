@@ -62,6 +62,7 @@ if [ -n "$have_val" ]; then
   run "R5  Synthesis + A/B verdict"               "$PY" remediation/phase5_synthesis.py
   run "R7  Deployment benchmarks + baseline"      "$PY" remediation/phase7_deployment.py
   run "R8  Referee closure (calib-thresh + mm3)"  "$PY" remediation/phase8_referee_closure.py
+  run "R9  External cross-assay replication"       "$PY" remediation/phase9_external_replication.py
   run "R6  Remediation figures (300 DPI)"         "$PY" remediation/plot_remediation_figures.py
 else
   echo; echo "========== REMEDIATION (SKIPPED) =========="

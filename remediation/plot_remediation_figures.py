@@ -153,9 +153,37 @@ def figR5():
     plt.close(fig)
 
 
+# ── figR6: external cross-assay replication — the oracle does not transfer ──
+def figR6():
+    d = json.loads((PROJECT / "results" / "json" / "external_replication.json").read_text())
+    rows = [("CIRCLE-seq\n(in-assay)", 0.925, 0.944, C["b"]),
+            ("SITE-Seq\n(cross-assay)", d["cross_assay_oracle_SITEseq"]["pair_roc_auc"],
+             d["cross_assay_oracle_SITEseq"]["per_guide_burden_rho"], C["c"]),
+            ("GUIDE-seq\n(cross-assay)", d["cross_assay_oracle_GUIDEseq"]["pair_roc_auc"],
+             d["cross_assay_oracle_GUIDEseq"]["per_guide_burden_rho"], C["c"])]
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(12, 4.4))
+    labs = [r[0] for r in rows]; cols = [r[3] for r in rows]
+    axL.bar(labs, [r[1] for r in rows], color=cols)
+    for i, r in enumerate(rows):
+        axL.text(i, r[1] + 0.01, f"{r[1]:.3f}", ha="center", fontsize=10)
+    axL.axhline(0.5, color=C["n"], ls=":", lw=1, label="chance"); axL.set_ylim(0.4, 1.0)
+    axL.set_ylabel("pair ROC-AUC"); axL.set_title("Off-target oracle: strong in-assay, weak cross-assay")
+    axL.legend(fontsize=8); axL.grid(axis="y", alpha=0.25)
+    axR.bar(labs, [r[2] for r in rows], color=cols)
+    for i, r in enumerate(rows):
+        axR.text(i, r[2] + 0.01, f"{r[2]:.3f}", ha="center", fontsize=10)
+    axR.axhline(0.0, color=C["n"], lw=0.8); axR.set_ylim(-0.05, 1.0)
+    axR.set_ylabel("per-guide burden fidelity ρ"); axR.set_title("Fidelity collapses across assays")
+    axR.grid(axis="y", alpha=0.25)
+    fig.suptitle("External replication: the oracle is assay-specific (cfBH still fails safe, FAR ≤ q)",
+                 fontweight="bold")
+    fig.tight_layout(); fig.savefig(FIG / "figR6_external_replication.png", dpi=DPI, bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
-    figR1(); figR2(); figR3(); figR4(); figR5()
+    figR1(); figR2(); figR3(); figR4(); figR5(); figR6()
     for f in ("figR1_validated_offtarget_cfbh", "figR2_uq_baselines", "figR3_transfer_shift",
-              "figR4_deployment", "figR5_referee_closure"):
+              "figR4_deployment", "figR5_referee_closure", "figR6_external_replication"):
         p = FIG / f"{f}.png"
         print(f"wrote {p.relative_to(PROJECT)} ({p.stat().st_size//1024} KB)")
