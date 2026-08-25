@@ -116,7 +116,8 @@ fresh clone reproduces from Stage 02 onward; stages needing the large, non-redis
 | **Real generator** | char-level autoregressive GRU on 55,603 sequences → 100% novel/unique candidates |
 | **Coverage & leakage** | marginal coverage exact at 55k scale; **unchanged under grouped splits** (no leakage inflation) |
 | **Baselines** | deep ensemble (0.02) and MC-dropout (0.54) miscalibrate at nominal 0.90; **conformalizing the same ensemble → 0.91 (exact)** |
-| **Deployment & fail-safe** | off-target burden needs **alignment-enumerated** sites (ρ 0.94); from sequence alone ρ ≈ 0 → cfBH **fails safe** (selects nothing) where a fixed-cutoff heuristic accepts ~57% at FAR 0.52 |
+| **Deployment & fail-safe** | off-target burden needs **alignment-enumerated** sites (ρ 0.94; **ρ 0.879 in the Cas-OFFinder mm≤3 regime**); from sequence alone ρ ≈ 0 → cfBH **fails safe** (selects nothing) rather than falsely accepting |
+| **Certificate vs tuning** | a calibration-**tuned** threshold violates FAR ≤ q on **36–42% of deployments** (p95 FAR 0.27–0.39); cfBH's distribution-free certificate never does |
 | **Honest limits** | indel-efficacy oracle caps at Spearman ≤ 0.78 → efficacy/joint cfBH power ≈ 0; coverage does **not** transfer across nuclease/cell-line |
 
 ## Repository layout

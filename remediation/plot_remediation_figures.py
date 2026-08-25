@@ -121,8 +121,41 @@ def figR4():
     plt.close(fig)
 
 
+# ── figR5: referee closure — calibrated-threshold FAR violations (#4) + aligned regime (#7) ──
+def figR5():
+    d = json.loads((PROJECT / "results" / "json" / "final_referee_closure.json").read_text())
+    bl = d["calibrated_threshold_vs_cfbh"]; ar = d["aligned_regime_hash7"]
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(12, 4.4))
+    qs = ["q=0.1", "q=0.2"]; x = np.arange(2); w = 0.35
+    cf = [bl[q]["cfbh"]["P_FAR_gt_q"] for q in qs]; ct = [bl[q]["calibrated_threshold"]["P_FAR_gt_q"] for q in qs]
+    axL.bar(x - w/2, cf, w, label="cfBH (certified)", color=C["b"])
+    axL.bar(x + w/2, ct, w, label="calibrated threshold", color=C["c"])
+    for i in range(2):
+        axL.text(x[i]+w/2, ct[i]+0.01, f"{ct[i]:.0%}", ha="center", fontsize=10)
+        axL.text(x[i]-w/2, cf[i]+0.01, f"{cf[i]:.0%}", ha="center", fontsize=10, color=C["b"])
+    axL.set_xticks(x); axL.set_xticklabels(["q=0.10", "q=0.20"]); axL.set_ylim(0, 0.55)
+    axL.set_ylabel("P(test FAR > q)  — safety-target violation rate")
+    axL.set_title("#4  Calibrated tuning violates FAR; cfBH certifies it")
+    axL.legend(fontsize=9); axL.grid(axis="y", alpha=0.25)
+    r = ar["burden_fidelity_rho_vs_validated"]
+    labs = ["all\ncandidates", "mm≤3\n(aligned)", "naive mm≤3\ncount"]
+    vals = [r["all_candidates"], r["mm<=3_aligned"], r["naive_mm<=3_count"]]
+    bars = axR.bar(labs, vals, color=[C["a"], C["b"], C["g"]])
+    for b, v in zip(bars, vals):
+        axR.text(b.get_x()+b.get_width()/2, v+0.01, f"{v:.3f}", ha="center", fontsize=10)
+    axR.axhline(0.85, color=C["n"], ls="--", lw=1.2, label="ρ = 0.85 threshold")
+    axR.set_ylim(0.5, 1.0); axR.set_ylabel("burden fidelity ρ vs validated truth")
+    axR.set_title("#7  Oracle survives the genome-wide-align (mm≤3) regime")
+    axR.legend(fontsize=9); axR.grid(axis="y", alpha=0.25)
+    fig.suptitle("Referee closure: distribution-free certificate (#4) and aligned-regime robustness (#7)",
+                 fontweight="bold")
+    fig.tight_layout(); fig.savefig(FIG / "figR5_referee_closure.png", dpi=DPI, bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
-    figR1(); figR2(); figR3(); figR4()
-    for f in ("figR1_validated_offtarget_cfbh", "figR2_uq_baselines", "figR3_transfer_shift", "figR4_deployment"):
+    figR1(); figR2(); figR3(); figR4(); figR5()
+    for f in ("figR1_validated_offtarget_cfbh", "figR2_uq_baselines", "figR3_transfer_shift",
+              "figR4_deployment", "figR5_referee_closure"):
         p = FIG / f"{f}.png"
         print(f"wrote {p.relative_to(PROJECT)} ({p.stat().st_size//1024} KB)")

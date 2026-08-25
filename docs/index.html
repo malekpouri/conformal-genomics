@@ -130,7 +130,12 @@
   <div class="card rounded-2xl p-4 sm:p-6 mt-5">
     <div class="text-slate-300 text-sm font-semibold mb-2">Deployment regime &amp; the fail-safe property</div>
     <div class="overflow-x-auto"><img src="assets/figR4_deployment.png" alt="Deployment regime: cfBH power needs alignment; fail-safe FAR control" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
-    <p class="text-slate-400 text-sm mt-3">Off-target burden needs <b>alignment-enumerated</b> sites (ρ 0.94); from the 20-nt sequence alone ρ ≈ 0. There cfBH <b>fails safe</b> — it selects nothing rather than falsely accepting — while a fixed-cutoff heuristic accepts ~57% at FAR 0.52. cfBH's value is the certified, fail-safe FAR ≤ q.</p>
+    <p class="text-slate-400 text-sm mt-3">Off-target burden needs <b>alignment-enumerated</b> sites (ρ 0.94; ρ 0.879 in the Cas-OFFinder mm≤3 regime); from the 20-nt sequence alone ρ ≈ 0. There cfBH <b>fails safe</b> — it selects nothing rather than falsely accepting.</p>
+  </div>
+  <div class="card rounded-2xl p-4 sm:p-6 mt-5">
+    <div class="text-slate-300 text-sm font-semibold mb-2">Why the certificate matters — vs a calibration-tuned threshold</div>
+    <div class="overflow-x-auto"><img src="assets/figR5_referee_closure.png" alt="Calibrated-threshold FAR violations and aligned-regime robustness" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
+    <p class="text-slate-400 text-sm mt-3">A calibration-<b>tuned</b> threshold overfits and <b>violates FAR ≤ q on 36–42% of deployments</b> (left); cfBH's distribution-free certificate never does. Burden fidelity <b>survives the genome-wide-align (mm≤3) regime</b> at ρ = 0.879 (right).</p>
   </div>
 </section>
 

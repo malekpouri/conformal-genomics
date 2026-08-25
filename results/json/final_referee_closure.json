@@ -1,0 +1,58 @@
+{
+  "calibrated_threshold_vs_cfbh": {
+    "q=0.1": {
+      "q": 0.1,
+      "cfbh": {
+        "mean_FAR": 0.0,
+        "p95_FAR": 0.0,
+        "P_FAR_gt_q": 0.0,
+        "mean_yield": 0.2967
+      },
+      "calibrated_threshold": {
+        "mean_FAR": 0.0926,
+        "p95_FAR": 0.267,
+        "P_FAR_gt_q": 0.358,
+        "mean_yield": 0.5446
+      }
+    },
+    "q=0.2": {
+      "q": 0.2,
+      "cfbh": {
+        "mean_FAR": 0.0087,
+        "p95_FAR": 0.0769,
+        "P_FAR_gt_q": 0.0,
+        "mean_yield": 0.4141
+      },
+      "calibrated_threshold": {
+        "mean_FAR": 0.1911,
+        "p95_FAR": 0.3889,
+        "P_FAR_gt_q": 0.416,
+        "mean_yield": 0.6304
+      }
+    }
+  },
+  "aligned_regime_hash7": {
+    "candidate_pool_scale": {
+      "circle_sites_per_guide_median": 4379,
+      "circle_sites_per_guide_max": 69600,
+      "circle_negative_rate": 0.9874,
+      "crispgen_genomewide_nearmatches_median": 12
+    },
+    "burden_fidelity_rho_vs_validated": {
+      "all_candidates": 0.944,
+      "mm<=3_aligned": 0.879,
+      "naive_mm<=3_count": 0.867
+    },
+    "cfbh_mm3_aligned_oracle_q0.10": {
+      "FAR": 0.0094,
+      "power_proxy_yield": 0.0677
+    },
+    "genomewide_aligned_burden_CRISPGen": {
+      "n_guides": 1000,
+      "median": 0.308,
+      "max": 31.91
+    },
+    "honest_gap": "Exhaustive Cas-OFFinder on hg38 for novel guides is not run (no binary). The mm<=3-restricted CIRCLE analysis is the aligned-regime proxy; a dual-labelled genome-wide-aligned + validated cohort is the remaining external validation."
+  },
+  "verdict": "cfBH's finite-sample FAR certificate holds distribution-free; a calibration-tuned threshold can violate the target on test due to sampling noise (see P_FAR_gt_q / p95_FAR). The aligned (mm<=3) oracle retains high burden fidelity, so the working regime is not an artifact of assay-restricted candidate sets."
+}
