@@ -1,0 +1,78 @@
+{
+  "device": "cuda",
+  "n_WT": 55603,
+  "alpha": 0.1,
+  "A_leakage_random_vs_grouped": {
+    "random": {
+      "mean_coverage": 0.9012,
+      "sd": 0.0034,
+      "reps": 15
+    },
+    "grouped": {
+      "mean_coverage": 0.9028,
+      "sd": 0.0062,
+      "reps": 15
+    }
+  },
+  "B_nuclease_transfer_OOD": {
+    "nominal": 0.9,
+    "note": "engineered-Cas9 / cell-line change is largely a LABEL/concept shift; weighted conformal (covariate-shift only) is not expected to fix it.",
+    "by_nuclease": {
+      "ESP": {
+        "n": 58616,
+        "coverage_plain": 0.15,
+        "coverage_weighted": 0.148,
+        "domain_clf_acc": 0.778,
+        "ess": 16632.7,
+        "label_mean_shift": -36.81
+      },
+      "HF": {
+        "n": 56887,
+        "coverage_plain": 0.475,
+        "coverage_weighted": 0.476,
+        "domain_clf_acc": 0.773,
+        "ess": 16632.2,
+        "label_mean_shift": -24.8
+      },
+      "HELA": {
+        "n": 8101,
+        "coverage_plain": 0.108,
+        "coverage_weighted": 0.283,
+        "domain_clf_acc": 0.862,
+        "ess": 4787.4,
+        "label_mean_shift": -46.95
+      },
+      "HCT116": {
+        "n": 4239,
+        "coverage_plain": 0.087,
+        "coverage_weighted": 0.226,
+        "domain_clf_acc": 0.906,
+        "ess": 5452.8,
+        "label_mean_shift": -47.21
+      },
+      "HL60": {
+        "n": 2076,
+        "coverage_plain": 0.141,
+        "coverage_weighted": 0.197,
+        "domain_clf_acc": 0.941,
+        "ess": 6516.5,
+        "label_mean_shift": -49.42
+      }
+    }
+  },
+  "C_uq_baselines": {
+    "nominal": 0.9,
+    "deep_ensemble_K5": {
+      "coverage": 0.024,
+      "mean_width": 0.95
+    },
+    "mc_dropout_T20": {
+      "coverage": 0.538,
+      "mean_width": 23.35
+    },
+    "conformalized_ensemble": {
+      "coverage": 0.907,
+      "mean_width": 51.79
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "efficacy_oracle_test_spearman": 0.78,
+  "1_marginal_coverage_real_efficacy": {
+    "absolute": {
+      "mean_coverage": 0.8989,
+      "ci95": [
+        0.8964,
+        0.9014
+      ]
+    },
+    "directional_lower": {
+      "mean_coverage": 0.9004,
+      "ci95": [
+        0.8981,
+        0.9027
+      ]
+    }
+  },
+  "2_real_cfbh": {
+    "offtarget_validated_phase2": {
+      "q=0.10": {
+        "FAR": 0.0,
+        "power": 0.584
+      },
+      "q=0.20": {
+        "FAR": 0.009,
+        "power": 0.796
+      }
+    },
+    "efficacy_real_measured": {
+      "q=0.1": {
+        "FAR": 0.0,
+        "FAR_le_q": true,
+        "power": 0.0,
+        "precision": NaN,
+        "yield": 0.0
+      },
+      "q=0.2": {
+        "FAR": 0.0,
+        "FAR_le_q": true,
+        "power": 0.0,
+        "precision": NaN,
+        "yield": 0.0
+      }
+    }
+  },
+  "3_joint_projection": {
+    "measured_fidelities": {
+      "eff_spearman": 0.78,
+      "rho_eff_used": 0.685,
+      "rho_off_used": 0.944
+    },
+    "joint_q0.10_ncal200": {
+      "FAR": 0.0,
+      "FAR_le_q": true,
+      "power": 0.0,
+      "precision": NaN,
+      "yield": 0.0
+    },
+    "joint_q0.10_ncal2000": {
+      "FAR": 0.0,
+      "FAR_le_q": true,
+      "power": 0.0,
+      "precision": NaN,
+      "yield": 0.0
+    },
+    "ceiling_if_eff_like_off_q0.10_ncal2000": {
+      "FAR": 0.0049,
+      "FAR_le_q": true,
+      "power": 0.1463,
+      "precision": 0.9951,
+      "yield": 0.0376
+    }
+  },
+  "verdict": "OFF-TARGET channel = DESTINATION A: validated oracle (AUC 0.925, burden rho 0.944) and REAL-DATA cfBH with power 0.58-0.80 and FAR<=q on experimentally validated CIRCLE-seq truth -- a genuine, working safety-selection method. EFFICACY channel = DESTINATION B: even at 55k the efficacy oracle tops out at Spearman ~0.68-0.78, below the ~0.9 fidelity cfBH needs, so efficacy-only real cfBH power is ~0 and the joint efficacy+off-target case is bounded to ~0 (ceiling only ~0.15 if efficacy matched off-target). In-distribution marginal coverage is EXACT at scale (0.899-0.900); coverage does NOT transfer across nuclease/cell-line (honest limit). NET: reframe the paper around the validated off-target safety-selection result (A), report the efficacy/joint case as an honest oracle-limited negative (B), and never claim joint validation (no dual-labelled cohort exists)."
+}

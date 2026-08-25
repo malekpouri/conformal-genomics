@@ -47,11 +47,31 @@ fi
 
 run "09  cfBH selection sensitivity"             "$PY" scripts/09_selection_sensitivity.py
 
+# --- Remediation studies (validated CIRCLE-seq oracle, real generator, honest design). These need
+# the large, non-redistributed CIRCLE-seq / CRISPR_HNN sources; they auto-skip when absent, and the
+# committed remediation/results/*.json + figures/figR*.png are kept. ---
+have_val=""
+for p in ../../I_1_CIRCLE_seq*.csv ../../Extra_Metadata/CRISPR_HNN/WT*; do
+  ls $p >/dev/null 2>&1 && have_val=1
+done
+if [ -n "$have_val" ]; then
+  run "R1  CIRCLE-seq retargeting diagnostic"    "$PY" remediation/phase1_circleseq_oracle.py
+  run "R2  Validated oracle + real-data cfBH"     "$PY" remediation/phase2_validated_oracle_cfbh.py
+  run "R3  Real generator + multi-objective"      "$PY" remediation/phase3_generator_multiobjective.py
+  run "R4  Honest design (leakage/OOD/baselines)" "$PY" remediation/phase4_honest_design.py
+  run "R5  Synthesis + A/B verdict"               "$PY" remediation/phase5_synthesis.py
+  run "R6  Remediation figures (300 DPI)"         "$PY" remediation/plot_remediation_figures.py
+else
+  echo; echo "========== REMEDIATION (SKIPPED) =========="
+  echo "CIRCLE-seq / CRISPR_HNN sources not found — keeping committed remediation results + figR*.png."
+fi
+
 # --- Test suite (data, scores, conformal, guided gen, benchmarks, selection, density-ratio) ---
 echo; echo "========== TESTS =========="
 for t in test_data_splits test_scores test_conformal_synthetic \
          test_guided_generation test_benchmark_repro test_selection test_density_ratio; do
   "$PY" "tests/${t}.py"
 done
+
 
 echo; echo ">> DONE. Metrics in results/json/, figures in figures/."

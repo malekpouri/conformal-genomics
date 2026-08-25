@@ -1,0 +1,40 @@
+{
+  "device": "cuda",
+  "generator": {
+    "corpus": "CRISPR_HNN WT spacers",
+    "n_corpus": 55603,
+    "n_generated": 2000,
+    "unique_frac": 1.0,
+    "novel_frac": 1.0,
+    "mean_pairwise_hamming": 14.61,
+    "positional_entropy_bits": 1.928,
+    "note": "real autoregressive GRU (char-level), not resampling emulation"
+  },
+  "efficacy_oracle_CRISPR_HNN_WT": {
+    "spearman": 0.685,
+    "r2": 0.463,
+    "n": 55603
+  },
+  "offtarget_oracle_validated_grounded": {
+    "spearman_log_burden": 0.648,
+    "n": 1000,
+    "calibration_pk": {
+      "0": 0.0,
+      "1": 0.0914,
+      "2": 0.0605,
+      "3": 0.0248,
+      "4": 0.0094
+    }
+  },
+  "generated_pool_design": {
+    "tau_eff": 80.19,
+    "tau_burden": 0.308,
+    "gen_eff_mean": 70.89,
+    "gen_burden_mean": 0.165,
+    "frac_oracle_OK": 0.258,
+    "accepted_top_quartile_frac": 0.086,
+    "accepted_eff_mean": 89.89,
+    "accepted_burden_mean": 0.0
+  },
+  "data_limitation": "No cohort has BOTH validated efficacy and validated off-target; multi-objective guarantee is validated per-objective (off-target FAR: Phase 2), not jointly. FAR on novel generated guides is oracle-relative."
+}

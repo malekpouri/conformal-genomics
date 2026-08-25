@@ -12,11 +12,11 @@
 </p>
 
 > **What this is.** ConformalGen is an open-source statistical library for **generative biological
-> sequence design**. It wraps the property predictors you already have (e.g. on-target efficacy,
-> off-target safety) in **split-conformal prediction**, turning point estimates into **finite-sample,
-> distribution-free** prediction intervals with a user-chosen coverage level $1-\alpha$ — and a
-> **bound-based acceptance policy** with an optional **conformal-selection (cfBH)** step that controls
-> the False Acceptance Rate (FAR ≤ q) among accepted candidates in finite samples.
+> sequence design**, validated against **experimentally measured off-target cleavage**. Its working core
+> is **off-target safety selection**: an off-target oracle grounded in **CIRCLE-seq** (ROC-AUC 0.925)
+> drives a **conformalized-Benjamini–Hochberg (cfBH)** step that provably controls the False Acceptance
+> Rate (FAR ≤ q) while recovering **58–80% of truly-safe guides** on real validated data. It also wraps
+> any predictor in **split-conformal prediction** for finite-sample, distribution-free (1−α) coverage.
 
 📊 **Live dashboard:** [malekpouri.github.io/conformal-genomics](https://malekpouri.github.io/conformal-genomics)
 
@@ -100,20 +100,23 @@ Plug in your own generator by subclassing `GenericSequenceGenerator` and impleme
 ```
 
 Runs Stages 01–09 (data → predictors → calibration → guided generation → RQ benchmarks → figures →
-ablation/FAR → biological audit → selection sensitivity) and the full 38-test suite. The prepared
-`data/` is shipped with the repo, so a fresh clone reproduces from Stage 02 onward; Stages 01 and 08
-(rebuild from raw genomic / CIRCLE-seq sources) run only when those large, non-redistributed inputs are
-present. Outputs: machine-readable metrics in `results/json/`, 300-DPI figures in `figures/`.
+ablation/FAR → biological audit → selection sensitivity), the **validated-oracle remediation studies**
+(`remediation/` — CIRCLE-seq off-target oracle, real generator, honest leakage/OOD/baseline analyses),
+and the full 38-test suite. The prepared `data/` and committed metrics/figures ship with the repo, so a
+fresh clone reproduces from Stage 02 onward; stages needing the large, non-redistributed raw sources
+(genome hits, CIRCLE-seq, CRISPR_HNN) auto-skip when absent. Outputs: `results/json/`,
+`remediation/results/`, and 300-DPI figures in `figures/`.
 
 ## Results at a glance
 
-| Research question | Finding |
+| Result | Finding |
 |---|---|
-| **RQ1** marginal coverage | empirical coverage matches nominal to within **0.002** for all 4 scores (500 resplits); only conformal reaches nominal (parametric Gaussian covers 0.67/0.61) |
-| **RQ2** efficiency & Mondrian | pooled calibration under-covers the heavy off-target tail (0.83 < 0.90); **Mondrian restores it** and tightens the low stratum ~11% |
-| **RQ3** covariate shift | plain conformal over-covers a shifted pool; **weighted conformal** (82-feature density ratio) recovers coverage, reported with ESS and finite-bound proportion |
-| **Selection (cfBH)** | FAR ≤ q unconditionally; power tracks oracle quality (0.98 at a perfect oracle; 0 on the real weak surrogate — an honest, oracle-limited result) |
-| **Oracle fidelity** | surrogate off-target audited vs CIRCLE-seq: ROC-AUC 0.70, MM≤3 sensitivity 0.17 (specific but insensitive) |
+| **Validated off-target oracle** | trained on CIRCLE-seq, guide-disjoint **ROC-AUC 0.925** (burden fidelity ρ 0.944) — vs 0.696 for a naive mismatch count |
+| **Real-data cfBH (primary)** | on **validated** CIRCLE-seq truth: **FAR ≤ q** with power **0.58** (q=0.10) / **0.80** (q=0.20) at precision ≥ 0.99 |
+| **Real generator** | char-level autoregressive GRU on 55,603 sequences → 100% novel/unique candidates |
+| **Coverage & leakage** | marginal coverage exact at 55k scale; **unchanged under grouped splits** (no leakage inflation) |
+| **Baselines** | deep ensemble (0.02) and MC-dropout (0.54) miscalibrate at nominal 0.90; **conformalizing the same ensemble → 0.91 (exact)** |
+| **Honest limits** | indel-efficacy oracle caps at Spearman ≤ 0.78 → efficacy/joint cfBH power ≈ 0; coverage does **not** transfer across nuclease/cell-line |
 
 ## Repository layout
 
@@ -129,12 +132,13 @@ conformal-genomics/
 │   ├── stats_utils.py    # bootstrap + paired-delta 95% CIs
 │   └── guided_generation.py  # pluggable generator interface + acceptance policy
 ├── scripts/              # 01_prepare_data … 09_selection_sensitivity
+├── remediation/          # validated-oracle rebuild: CIRCLE-seq oracle, real generator, honest design
 ├── tests/                # 38 tests
 ├── data/                 # pool, splits/, splits_grouped/, per-chromosome table, data_card.md
-├── results/json/         # all metrics
-├── figures/              # publication figures (300 DPI)
+├── results/json/         # pipeline metrics   ·   remediation/results/ # validated-oracle metrics
+├── figures/              # publication figures (300 DPI), incl. figR1–figR3
 ├── docs/                 # GitHub Pages dashboard
-└── reproduce.sh          # one-line 9-stage end-to-end driver
+└── reproduce.sh          # one-line end-to-end driver (pipeline + remediation + tests)
 ```
 
 ## Citation

@@ -1,0 +1,32 @@
+{
+  "dataset": {
+    "file": "I_1_CIRCLE_seq_10gRNA_wholeDataset.csv",
+    "n_pairs": 584949,
+    "n_validated": 7371,
+    "n_guides": 80,
+    "positive_rate": 0.0126
+  },
+  "pair_classifier_guide_disjoint_CV": {
+    "roc_auc": 0.856,
+    "average_precision": 0.092,
+    "naive_mmcount_roc_auc": 0.696,
+    "naive_mmcount_ap": 0.026
+  },
+  "per_guide_offtarget_burden_fidelity": {
+    "rho_spearman_validated_oracle": 0.91,
+    "pearson_validated_oracle": 0.801,
+    "rho_spearman_old_MM3_surrogate": 0.817,
+    "n_guides": 80
+  },
+  "implied_cfBH_power_at_rho_new_q0.10": 0.156,
+  "reference_power_vs_rho_curve": {
+    "0.2": 0.0,
+    "0.4": 0.0,
+    "0.6": 0.0,
+    "0.8": 0.006,
+    "0.9": 0.112,
+    "0.95": 0.334,
+    "0.99": 0.707,
+    "1.0": 0.98
+  }
+}

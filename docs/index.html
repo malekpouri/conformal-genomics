@@ -3,10 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ConformalGen — Distribution-Free UQ for Generative Genomic Design</title>
-<meta name="description" content="A model-agnostic conformal-prediction library with finite-sample coverage guarantees and cfBH False-Acceptance-Rate control for generative genomic design."/>
+<title>ConformalGen — Validated Off-Target Safety Selection for Generative CRISPR Design</title>
+<meta name="description" content="A model-agnostic conformal decision framework validated against experimentally measured CRISPR off-target cleavage: cfBH safety selection with finite-sample FAR control."/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={theme:{extend:{fontFamily:{mono:['ui-monospace','SFMono-Regular','Menlo','monospace']}}}}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -16,44 +15,41 @@
   .card{background:#111830;border:1px solid #1e2a4a}
   .chip{background:#12223f;border:1px solid #1e3a5f}
   th,td{border-color:#1e2a4a}
-  a{color:#7cc4ff}
-  ::selection{background:#2563eb55}
+  a{color:#7cc4ff} ::selection{background:#2563eb55}
 </style>
 </head>
 <body class="bg-[#0b1020] text-slate-200 font-sans antialiased">
 
-<!-- Nav -->
 <header class="sticky top-0 z-20 backdrop-blur bg-[#0b1020]/80 border-b border-[#1e2a4a]">
   <div class="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
     <div class="font-semibold tracking-tight text-slate-100">Conformal<span class="text-sky-400">Gen</span></div>
     <nav class="hidden sm:flex gap-6 text-sm text-slate-400">
-      <a href="#abstract" class="hover:text-sky-300">Abstract</a>
+      <a href="#result" class="hover:text-sky-300">Primary result</a>
       <a href="#method" class="hover:text-sky-300">Method</a>
-      <a href="#architecture" class="hover:text-sky-300">Architecture</a>
-      <a href="#results" class="hover:text-sky-300">Results</a>
+      <a href="#evidence" class="hover:text-sky-300">Evidence</a>
+      <a href="#limits" class="hover:text-sky-300">Honest limits</a>
       <a href="#quickstart" class="hover:text-sky-300">Quickstart</a>
-      <a href="#cite" class="hover:text-sky-300">Cite</a>
     </nav>
     <a href="https://github.com/malekpouri/conformal-genomics" class="text-sm px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white">GitHub ↗</a>
   </div>
 </header>
 
 <!-- Hero -->
-<section class="max-w-6xl mx-auto px-5 pt-16 pb-10 text-center">
+<section class="max-w-6xl mx-auto px-5 pt-16 pb-8 text-center">
   <div class="inline-flex gap-2 flex-wrap justify-center mb-5">
-    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">MIT licensed</span>
-    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">CPU · 0 GB VRAM</span>
-    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">38 tests passing</span>
-    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">finite-sample · distribution-free</span>
+    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">validated on CIRCLE-seq</span>
+    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">FAR ≤ q, finite-sample</span>
+    <span class="chip text-xs px-2.5 py-1 rounded-full text-sky-200">MIT · CPU · 38 tests</span>
   </div>
   <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-    Distribution-Free Uncertainty Quantification<br class="hidden sm:block"/>
-    for Generative Genomic Design
+    Statistically Validated Off-Target Safety Selection<br class="hidden sm:block"/>
+    for Generative CRISPR Design
   </h1>
-  <p class="mt-5 max-w-2xl mx-auto text-slate-400">
-    A <b class="text-slate-200">model-agnostic conformal-prediction wrapper</b> that turns any sequence
-    generator's point predictions into <b class="text-slate-200">guaranteed bounds</b> and a
-    <b class="text-slate-200">FAR-controlled acceptance decision</b> — with the honesty caveats stated up front.
+  <p class="mt-5 max-w-3xl mx-auto text-slate-400">
+    A model-agnostic <b class="text-slate-200">conformal decision framework</b>, validated against
+    <b class="text-slate-200">experimentally measured off-target cleavage</b>. Its working core:
+    a CIRCLE-seq-grounded oracle drives <b class="text-slate-200">cfBH selection</b> that provably
+    controls the False Acceptance Rate while recovering most truly-safe guides.
   </p>
   <div class="mt-7 flex gap-3 justify-center flex-wrap">
     <a href="#quickstart" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium">Quickstart</a>
@@ -61,209 +57,107 @@
   </div>
 </section>
 
-<!-- Abstract & Motivation -->
-<section id="abstract" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">Abstract &amp; Motivation</h2>
-  <div class="card rounded-2xl p-6 space-y-4 text-slate-300 leading-relaxed">
-    <p>Generative models propose novel biological sequences — CRISPR/Cas9 sgRNAs among them — that a
-    learned predictor scores as efficient on-target and safe off-target. Deployment needs calibrated
-    confidence that a candidate's <em>oracle-defined</em> efficacy is at least a design threshold and its
-    off-target burden at most a safety threshold. Point predictions give no such control; generative
-    sampling shifts the candidate distribution; and the two properties must be controlled jointly.</p>
-    <p>ConformalGen wraps whatever predictors you have in <b class="text-slate-100">split-conformal
-    prediction</b>, giving finite-sample, distribution-free coverage under exchangeability:</p>
-    <div class="text-center py-1">$$1-\alpha \;\le\; \Pr\big(y_{n+1}\in C(x_{n+1})\big) \;\le\; 1-\alpha+\tfrac{1}{n+1}.$$</div>
-    <p class="text-sm text-slate-400">All guarantees are <b>marginal</b> and with respect to the
-    <b>surrogate oracle labels</b>, not biological ground truth — a limitation we audit explicitly below.</p>
+<!-- Primary result -->
+<section id="result" class="max-w-6xl mx-auto px-5 py-8">
+  <h2 class="text-xl font-semibold text-white mb-4">Primary result — validated off-target safety selection</h2>
+  <div class="grid sm:grid-cols-4 gap-4 mb-5">
+    <div class="card rounded-xl p-4 text-center"><div class="text-2xl font-bold text-sky-300">0.925</div><div class="text-xs text-slate-400 mt-1">off-target oracle ROC-AUC<br/>(guide-disjoint, vs CIRCLE-seq)</div></div>
+    <div class="card rounded-xl p-4 text-center"><div class="text-2xl font-bold text-sky-300">0.58–0.80</div><div class="text-xs text-slate-400 mt-1">cfBH power on real validated data<br/>(q = 0.10 → 0.20)</div></div>
+    <div class="card rounded-xl p-4 text-center"><div class="text-2xl font-bold text-emerald-300">FAR ≤ q</div><div class="text-xs text-slate-400 mt-1">finite-sample control<br/>(0.000 / 0.009)</div></div>
+    <div class="card rounded-xl p-4 text-center"><div class="text-2xl font-bold text-emerald-300">≥ 0.99</div><div class="text-xs text-slate-400 mt-1">precision of selected guides</div></div>
+  </div>
+  <div class="card rounded-2xl p-4 sm:p-6">
+    <div class="overflow-x-auto"><img src="assets/figR1_validated_offtarget_cfbh.png" alt="Validated off-target oracle and real-data cfBH" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
+    <p class="text-slate-400 text-sm mt-3 text-center">Off-target oracle trained on experimentally validated CIRCLE-seq cleavage (left); cfBH selection on real validated truth (right).</p>
   </div>
 </section>
 
-<!-- Method: propositions -->
-<section id="method" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">Two core results</h2>
+<!-- Method -->
+<section id="method" class="max-w-6xl mx-auto px-5 py-8">
+  <h2 class="text-xl font-semibold text-white mb-4">How it works</h2>
   <div class="grid md:grid-cols-2 gap-5">
     <div class="card rounded-2xl p-6">
-      <div class="text-sky-300 text-sm font-semibold mb-2">Proposition 1 — practical multi-objective formulation</div>
-      <p class="text-slate-300 text-sm leading-relaxed">A single standardized $\infty$-norm score
-      $s_{\mathrm{mo}}=\max\{a,b\}$ over the two directional residuals yields <b>joint</b> $(1-\alpha)$
-      coverage of both objectives at once:</p>
-      <div class="text-center py-2 text-[0.95rem]">$$\{s_{\mathrm{mo}}\le\hat q_\alpha\}=\{y_{\mathrm{eff}}\ge \hat\mu_{\mathrm{eff}}-\hat q_\alpha\hat\sigma_{\mathrm{eff}}\}\cap\{y_{\mathrm{off}}\le \hat\mu_{\mathrm{off}}+\hat q_\alpha\hat\sigma_{\mathrm{off}}\}.$$</div>
-      <p class="text-slate-400 text-sm">No Bonferroni, no independence assumption — a per-axis union
-      bound would give only $1-2\alpha$. (A direct application of split-conformal validity, not a new theorem.)</p>
+      <div class="text-sky-300 text-sm font-semibold mb-2">Marginal coverage (split-conformal)</div>
+      <p class="text-slate-300 text-sm">Any predictor is wrapped for finite-sample, distribution-free coverage under exchangeability:</p>
+      <div class="text-center py-2">$$1-\alpha \le \Pr(y\in C(x)) \le 1-\alpha+\tfrac{1}{n+1}.$$</div>
+      <p class="text-slate-400 text-sm">A multi-objective $\infty$-norm score covers both objectives with one quantile (no union bound).</p>
     </div>
     <div class="card rounded-2xl p-6">
-      <div class="text-sky-300 text-sm font-semibold mb-2">Proposition 2 — cfBH selective FAR control</div>
-      <p class="text-slate-300 text-sm leading-relaxed">Reduce the criterion to a scalar target
-      $T(y)=\min\{(y_{\mathrm{eff}}-\tau_{\mathrm{eff}})/s_{\mathrm{eff}},\,(\log(1{+}\tau_{\mathrm{off}})-\log(1{+}y_{\mathrm{off}}))/s_{\mathrm{off}}\}$,
-      so $\mathrm{OK}(y)\!\iff\!T(y)\ge0$. With monotone score $V(x,t)=t-\hat T(x)$ and
-      full-calibration conformal $p$-values</p>
-      <div class="text-center py-2 text-[0.95rem]">$$p_j=\frac{1+\sum_{i=1}^{n}\mathbb{1}\{V(X_i,T_i)\le V(X_j,0)\}}{n+1},$$</div>
-      <p class="text-slate-400 text-sm">Benjamini–Hochberg controls the <b>False Acceptance Rate</b>
-      (an application-specific FDR-type criterion) at $\mathrm{FAR}\le q$ in finite samples
-      (Jin&nbsp;&amp;&nbsp;Candès 2023).</p>
+      <div class="text-sky-300 text-sm font-semibold mb-2">cfBH selective FAR control</div>
+      <p class="text-slate-300 text-sm">Scalar target $T(y)=\min\{(y_{\mathrm{eff}}-\tau_{\mathrm{eff}})/s_{\mathrm{eff}},\,(\log(1{+}\tau_{\mathrm{off}})-\log(1{+}y_{\mathrm{off}}))/s_{\mathrm{off}}\}$, monotone score $V(x,t)=t-\hat T(x)$, full-calibration p-values + Benjamini–Hochberg:</p>
+      <div class="text-center py-2 text-[0.95rem]">$$p_j=\frac{1+\sum_{i=1}^{n}\mathbb{1}\{V(X_i,T_i)\le V(X_j,0)\}}{n+1}.$$</div>
+      <p class="text-slate-400 text-sm">Controls the False Acceptance Rate (an FDR-type criterion) at $\mathrm{FAR}\le q$ in finite samples.</p>
     </div>
+  </div>
+  <div class="card rounded-2xl p-4 sm:p-6 mt-5">
+    <div class="overflow-x-auto"><img src="assets/fig1_architecture.png" alt="ConformalGen architecture" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
   </div>
 </section>
 
-<!-- Architecture -->
-<section id="architecture" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">Architecture</h2>
-  <div class="card rounded-2xl p-4 sm:p-6">
-    <div class="overflow-x-auto">
-      <img src="assets/fig1_architecture.png" alt="ConformalGen framework: generator → predictors → calibration → bounds → acceptance"
-           class="mx-auto rounded-lg bg-white p-2 max-w-full"/>
-    </div>
-    <p class="text-slate-400 text-sm mt-3 text-center">The generator and property oracles are opaque,
-    pluggable components; ConformalGen converts their outputs into calibrated bounds and a
-    FAR-controlled accept/reject decision.</p>
-  </div>
-</section>
-
-<!-- Results -->
-<section id="results" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">Benchmarks &amp; ablation</h2>
-
+<!-- Evidence -->
+<section id="evidence" class="max-w-6xl mx-auto px-5 py-8">
+  <h2 class="text-xl font-semibold text-white mb-4">Supporting evidence</h2>
   <div class="grid lg:grid-cols-2 gap-5">
-    <!-- RQ1 table -->
     <div class="card rounded-2xl p-6">
-      <h3 class="font-semibold text-slate-100 mb-1">RQ1 · Marginal coverage validity</h3>
-      <p class="text-slate-400 text-sm mb-3">Mean over 500 resplits; only conformal reaches nominal.</p>
-      <div class="overflow-x-auto">
-      <table class="w-full text-sm border-collapse">
-        <thead class="text-slate-400"><tr><th class="text-left py-1.5 border-b">Interval method</th><th class="border-b">Eff cov</th><th class="border-b">Off cov</th></tr></thead>
-        <tbody class="text-slate-300">
-          <tr><td class="py-1.5 border-b">Parametric Gaussian</td><td class="text-center border-b">0.670</td><td class="text-center border-b">0.610</td></tr>
-          <tr><td class="py-1.5 border-b">Uncalibrated QR</td><td class="text-center border-b">0.860</td><td class="text-center border-b">0.835</td></tr>
-          <tr><td class="py-1.5 border-b text-sky-200">Split-conformal</td><td class="text-center border-b text-sky-200 font-medium">0.935</td><td class="text-center border-b text-sky-200 font-medium">0.915</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p class="text-slate-500 text-xs mt-2">Nominal 0.90 (α=0.10). All 4 scores within ±0.002 of nominal across resplits.</p>
-    </div>
-
-    <!-- RQ2 Mondrian -->
-    <div class="card rounded-2xl p-6">
-      <h3 class="font-semibold text-slate-100 mb-1">RQ2 · Mondrian tail recovery</h3>
-      <p class="text-slate-400 text-sm mb-3">Pooled calibration under-covers the heavy off-target tail; Mondrian restores it.</p>
-      <div class="overflow-x-auto">
-      <table class="w-full text-sm border-collapse">
-        <thead class="text-slate-400"><tr><th class="text-left py-1.5 border-b">Off-target stratum</th><th class="border-b">Pooled cov</th><th class="border-b">Mondrian cov</th></tr></thead>
-        <tbody class="text-slate-300">
-          <tr><td class="py-1.5 border-b">low</td><td class="text-center border-b">0.952</td><td class="text-center border-b">0.905</td></tr>
-          <tr><td class="py-1.5 border-b">med</td><td class="text-center border-b">0.985</td><td class="text-center border-b">0.970</td></tr>
-          <tr><td class="py-1.5 border-b text-amber-200">high (heavy tail)</td><td class="text-center border-b text-red-300">0.831</td><td class="text-center border-b text-emerald-300 font-medium">0.859</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p class="text-slate-500 text-xs mt-2">α=0.10, tercile stratification by predicted off-target magnitude.</p>
-    </div>
-  </div>
-
-  <!-- cfBH sensitivity -->
-  <div class="card rounded-2xl p-6 mt-5">
-    <h3 class="font-semibold text-slate-100 mb-1">Selection (cfBH) · FAR control &amp; the power/oracle trade-off</h3>
-    <p class="text-slate-400 text-sm mb-4">FAR ≤ q in every configuration (validity is unconditional).
-    Selection <em>power</em> tracks oracle fidelity ρ — reaching a ceiling only at a perfect oracle,
-    while our real surrogate (ρ ≈ 0.56) is underpowered. A calibration-size sweep rules out a
-    finite-sample cause.</p>
-    <div class="overflow-x-auto mb-4">
-    <table class="w-full text-sm border-collapse">
-      <thead class="text-slate-400"><tr>
-        <th class="text-left py-1.5 border-b">Oracle fidelity ρ</th><th class="border-b">0.8</th><th class="border-b">0.9</th><th class="border-b">0.95</th><th class="border-b">0.99</th><th class="border-b">1.0 (perfect)</th>
-      </tr></thead>
-      <tbody class="text-slate-300">
-        <tr><td class="py-1.5 border-b">Power (recall of true-OK)</td><td class="text-center border-b">0.006</td><td class="text-center border-b">0.112</td><td class="text-center border-b">0.334</td><td class="text-center border-b">0.707</td><td class="text-center border-b text-emerald-300 font-medium">0.980</td></tr>
-        <tr><td class="py-1.5 border-b">FAR (target ≤ 0.10)</td><td class="text-center border-b">0.001</td><td class="text-center border-b">0.004</td><td class="text-center border-b">0.005</td><td class="text-center border-b">0.002</td><td class="text-center border-b">0.000</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <div class="overflow-x-auto">
-      <img src="assets/fig7_selection_sensitivity.png" alt="cfBH selection sensitivity: FAR<=q throughout; power vs fidelity, n_cal, and batch size"
-           class="mx-auto rounded-lg bg-white p-2 max-w-full"/>
-    </div>
-  </div>
-
-  <!-- coverage + oracle audit -->
-  <div class="grid lg:grid-cols-2 gap-5 mt-5">
-    <div class="card rounded-2xl p-4 sm:p-6">
-      <h3 class="font-semibold text-slate-100 mb-3">RQ1 coverage across scores</h3>
-      <div class="overflow-x-auto"><img src="assets/fig2_rq1_coverage_validity.png" alt="RQ1 coverage validity" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
-    </div>
-    <div class="card rounded-2xl p-6">
-      <h3 class="font-semibold text-slate-100 mb-1">Oracle fidelity (post-hoc CIRCLE-seq audit)</h3>
-      <p class="text-slate-400 text-sm mb-3">Coverage is w.r.t. a <b>surrogate</b> off-target oracle
-      (GRCh38, SpCas9 NGG, Hamming ≤ 3, no indels), never used in calibration.</p>
-      <ul class="text-slate-300 text-sm space-y-2">
-        <li>• Mismatch-score ROC-AUC <b class="text-slate-100">0.696</b> (CIRCLE-seq, 585k sites)</li>
-        <li>• MM≤3 rule: specificity <b class="text-slate-100">0.955</b>, sensitivity <b class="text-slate-100">0.172</b></li>
-        <li>• Tsai set: <b class="text-slate-100">58.6%</b> captured at MM≤3; <b class="text-slate-100">41.4%</b> involve bulges the proxy cannot represent</li>
+      <h3 class="font-semibold text-slate-100 mb-1">Real generator + coverage at scale</h3>
+      <ul class="text-slate-300 text-sm space-y-2 mt-2">
+        <li>• Char-level <b>autoregressive GRU</b> trained on <b>55,603</b> real spacers → 100% novel, 100% unique candidates.</li>
+        <li>• Marginal coverage <b>exact</b> at 55k scale (0.899–0.900 at nominal 0.90).</li>
+        <li>• <b>No leakage inflation</b>: grouped-split coverage 0.903 vs random 0.901.</li>
       </ul>
-      <p class="text-slate-500 text-xs mt-3">The surrogate is specific but insensitive — guarantees are
-      honest as <em>oracle-label</em> coverage, not biological truth.</p>
+    </div>
+    <div class="card rounded-2xl p-4 sm:p-6">
+      <h3 class="font-semibold text-slate-100 mb-3">Beats real ML uncertainty baselines</h3>
+      <div class="overflow-x-auto"><img src="assets/figR2_uq_baselines.png" alt="UQ baselines vs conformal" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
     </div>
   </div>
+</section>
+
+<!-- Honest limits -->
+<section id="limits" class="max-w-6xl mx-auto px-5 py-8">
+  <h2 class="text-xl font-semibold text-white mb-4">Honest limits (what does <em>not</em> work)</h2>
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="card rounded-2xl p-6">
+      <div class="text-amber-300 text-sm font-semibold mb-2">Efficacy noise floor</div>
+      <p class="text-slate-300 text-sm">Indel-efficacy is intrinsically hard: even at 55k the efficacy oracle tops out at Spearman ≤ 0.78, below the ≳ 0.9 fidelity cfBH needs. Efficacy-only and joint selection power are ≈ 0 — a property of the assay, not of conformal prediction. More data does not help.</p>
+    </div>
+    <div class="card rounded-2xl p-4 sm:p-6">
+      <div class="text-amber-300 text-sm font-semibold mb-2">Coverage does not transfer</div>
+      <div class="overflow-x-auto"><img src="assets/figR3_transfer_shift.png" alt="Cross-nuclease transfer failure" class="mx-auto rounded-lg bg-white p-2 max-w-full"/></div>
+    </div>
+  </div>
+  <p class="text-slate-500 text-sm mt-4">No cohort carries both validated efficacy and validated off-target, so the multi-objective guarantee is validated <b>per objective</b>, never jointly. Recalibrate per nuclease/cell-line rather than assuming transfer.</p>
 </section>
 
 <!-- Quickstart -->
-<section id="quickstart" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">Quickstart &amp; reproduction</h2>
+<section id="quickstart" class="max-w-6xl mx-auto px-5 py-8">
+  <h2 class="text-xl font-semibold text-white mb-4">Quickstart</h2>
   <div class="grid lg:grid-cols-2 gap-5">
     <div class="card rounded-2xl p-6">
-      <div class="text-sm text-slate-400 mb-2">Install</div>
+      <div class="text-sm text-slate-400 mb-2">Install & reproduce (CPU)</div>
       <pre class="text-[0.8rem] font-mono bg-[#0a0f1e] rounded-lg p-4 overflow-x-auto text-slate-300">git clone https://github.com/malekpouri/conformal-genomics.git
 cd conformal-genomics
-python -m venv venv &amp;&amp; source venv/bin/activate
-pip install -r requirements.txt</pre>
-      <div class="text-sm text-slate-400 mt-4 mb-2">Reproduce everything (CPU, 0 GB VRAM)</div>
-      <pre class="text-[0.8rem] font-mono bg-[#0a0f1e] rounded-lg p-4 overflow-x-auto text-slate-300">./reproduce.sh   # Stages 01–09 + 38 tests</pre>
+pip install -r requirements.txt
+./reproduce.sh   # pipeline + remediation + 38 tests</pre>
     </div>
     <div class="card rounded-2xl p-6">
-      <div class="text-sm text-slate-400 mb-2">Filter candidates with guaranteed bounds</div>
+      <div class="text-sm text-slate-400 mb-2">Off-target safety selection with FAR control</div>
       <pre class="text-[0.8rem] font-mono bg-[#0a0f1e] rounded-lg p-4 overflow-x-auto text-slate-300"><span class="text-sky-300">from</span> src.selection <span class="text-sky-300">import</span> ConformalSelector
 
 sel = ConformalSelector(tau_eff=45., tau_off=20.)\
         .fit(train_seq, train_eff, train_off)
 sel.calibrate(cal_seq, cal_eff, cal_off)
-
-<span class="text-slate-500"># FAR &lt;= q, plus yield / precision / power</span>
-print(sel.evaluate(test_seq, test_eff,
-                   test_off, q=0.10))</pre>
-      <p class="text-slate-500 text-xs mt-3">Any generator is a drop-in via the
-      <span class="font-mono">GenericSequenceGenerator</span> interface.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Cite / License -->
-<section id="cite" class="max-w-6xl mx-auto px-5 py-10">
-  <h2 class="text-xl font-semibold text-white mb-4">License &amp; citation</h2>
-  <div class="grid lg:grid-cols-2 gap-5">
-    <div class="card rounded-2xl p-6">
-      <div class="text-sm text-slate-400 mb-2">Open source under the MIT License</div>
-      <p class="text-slate-300 text-sm">© Mohammad Malekpouri. Free to use, modify, and distribute with
-      attribution. No warranty.</p>
-    </div>
-    <div class="card rounded-2xl p-6">
-      <div class="text-sm text-slate-400 mb-2">BibTeX</div>
-      <pre class="text-[0.75rem] font-mono bg-[#0a0f1e] rounded-lg p-4 overflow-x-auto text-slate-300">@software{conformalgen,
-  author  = {Malekpouri, Mohammad},
-  title   = {ConformalGen: Distribution-Free
-             Uncertainty Quantification for
-             Generative Genomic Design},
-  year    = {2026},
-  url     = {https://github.com/malekpouri/conformal-genomics},
-  license = {MIT}
-}</pre>
+<span class="text-slate-500"># FAR &lt;= q, plus power / precision / yield</span>
+print(sel.evaluate(test_seq, test_eff, test_off, q=0.10))</pre>
     </div>
   </div>
 </section>
 
 <footer class="border-t border-[#1e2a4a] mt-6">
   <div class="max-w-6xl mx-auto px-5 py-8 text-center text-slate-500 text-sm">
-    ConformalGen — model-agnostic conformal decision framework for generative genomic design ·
-    <a href="https://github.com/malekpouri/conformal-genomics">GitHub</a>
+    ConformalGen · validated off-target safety selection for generative CRISPR design ·
+    MIT · <a href="https://github.com/malekpouri/conformal-genomics">GitHub</a>
   </div>
 </footer>
-
 </body>
 </html>

@@ -1,0 +1,39 @@
+{
+  "richer_oracle": {
+    "features": "mismatch(20)+guide_onehot(80)+off_onehot(80)+count(1)=181",
+    "roc_auc": 0.925,
+    "average_precision": 0.281,
+    "phase1_mmonly_roc_auc": 0.856
+  },
+  "per_guide_burden_fidelity": {
+    "rho_spearman": 0.944,
+    "pearson": 0.955,
+    "phase1_rho": 0.91,
+    "n_guides": 80
+  },
+  "real_data_cfbh_offtarget_only": {
+    "tau_off_validated": 17.0,
+    "ok_fraction": 0.512,
+    "n_cal": 53,
+    "n_test": 27,
+    "mc": 300,
+    "levels": {
+      "q=0.1": {
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.5837,
+        "mean_precision": 1.0,
+        "mean_yield": 0.3067,
+        "mean_n_selected": 8.28
+      },
+      "q=0.2": {
+        "mean_FAR": 0.0086,
+        "FAR_le_q": true,
+        "mean_power": 0.7962,
+        "mean_precision": 0.9913,
+        "mean_yield": 0.4078,
+        "mean_n_selected": 11.01
+      }
+    }
+  }
+}
