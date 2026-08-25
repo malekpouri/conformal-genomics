@@ -111,7 +111,7 @@ fresh clone reproduces from Stage 02 onward; stages needing the large, non-redis
 
 | Result | Finding |
 |---|---|
-| **Validated off-target oracle** | trained on CIRCLE-seq, guide-disjoint **ROC-AUC 0.925** (burden fidelity ρ 0.944) — vs 0.696 for a naive mismatch count |
+| **Validated off-target oracle** | trained on CIRCLE-seq, guide-disjoint **ROC-AUC 0.925** (average precision 0.281; burden fidelity ρ 0.944) — vs 0.696 for a naive mismatch count |
 | **Real-data cfBH (primary)** | on **validated** CIRCLE-seq truth: **FAR ≤ q** with power **0.58** (q=0.10) / **0.80** (q=0.20) at precision ≥ 0.99 |
 | **Real generator** | char-level autoregressive GRU on 55,603 sequences → 100% novel/unique candidates |
 | **Coverage & leakage** | marginal coverage exact at 55k scale; **unchanged under grouped splits** (no leakage inflation) |
