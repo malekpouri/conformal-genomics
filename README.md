@@ -144,7 +144,16 @@ conformal-genomics/
 └── reproduce.sh          # one-line end-to-end driver (pipeline + remediation + tests)
 ```
 
-## Citation
+## Citation & research line
+
+ConformalGen is the certified **selection** layer of a three-part program for multi-objective CRISPR
+design — **CRISPGen** (generation) → **Pareto-DPO** (alignment) → **ConformalGen** (certified safety
+selection):
+
+- Malekpouri M, Lotfi S. *CRISPGen: A Deep Generative Framework for Multi-Objective CRISPR/Cas9 Guide
+  RNA Design via Conditional Latent Diffusion and Dual-Critic Reinforcement Learning.* Computational
+  Biology and Chemistry, 2026. [doi:10.1016/j.compbiolchem.2026.109328](https://doi.org/10.1016/j.compbiolchem.2026.109328)
+  · [github.com/malekpouri/CRISPGen](https://github.com/malekpouri/CRISPGen)
 
 ```bibtex
 @software{conformalgen,
@@ -153,6 +162,15 @@ conformal-genomics/
   year    = {2026},
   url     = {https://github.com/malekpouri/conformal-genomics},
   license = {MIT}
+}
+
+@article{malekpouri2026crispgen,
+  author  = {Malekpouri, Mohammad and Lotfi, Somayeh},
+  title   = {{CRISPGen}: A Deep Generative Framework for Multi-Objective {CRISPR/Cas9} Guide {RNA} Design
+             via Conditional Latent Diffusion and Dual-Critic Reinforcement Learning},
+  journal = {Computational Biology and Chemistry},
+  year    = {2026}, pages = {109328},
+  doi     = {10.1016/j.compbiolchem.2026.109328}
 }
 ```
 
