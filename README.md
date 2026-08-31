@@ -146,9 +146,8 @@ conformal-genomics/
 
 ## Citation & research line
 
-ConformalGen is the certified **selection** layer of a three-part program for multi-objective CRISPR
-design — **CRISPGen** (generation) → **Pareto-DPO** (alignment) → **ConformalGen** (certified safety
-selection):
+ConformalGen is the certified **selection** layer that wraps a multi-objective CRISPR generator such as
+**CRISPGen** (generation) → **ConformalGen** (certified safety selection):
 
 - Malekpouri M, Lotfi S. *CRISPGen: A Deep Generative Framework for Multi-Objective CRISPR/Cas9 Guide
   RNA Design via Conditional Latent Diffusion and Dual-Critic Reinforcement Learning.* Computational
