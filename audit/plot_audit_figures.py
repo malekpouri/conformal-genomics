@@ -128,8 +128,8 @@ def fig_a2():
     ax[1].bar(x - .2, ap, .38, color=cols)
     ax[1].bar(x + .2, wgap, .38, color=cols, alpha=.45)
     ax[1].axhline(j["cohort"]["prevalence"], color=LEAK, ls=":", lw=1)
-    ax[1].text(len(order) - .5, j["cohort"]["prevalence"] + .002, "prevalence 1.26%",
-               fontsize=6.5, color=LEAK, ha="right")
+    ax[1].text(len(order) - .5, j["cohort"]["prevalence"] + .0035, "prevalence 1.26%",
+               fontsize=6.5, color=LEAK, ha="right", va="bottom")
     ax[1].set_xticks(x); ax[1].set_xticklabels([pretty[k] for k in order], fontsize=6.4, rotation=32, ha="right")
     ax[1].set_ylabel("Average precision")
     ax[1].set_title("(b) Average precision\n(the metric that matters at 1.26%)")
