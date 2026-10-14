@@ -1,0 +1,480 @@
+{
+  "nominal": 0.9,
+  "wt": {
+    "file": "WT\uff08n=55603\uff09.csv",
+    "n_unique": 55603,
+    "q_halfwidth": 22.73
+  },
+  "panel": {
+    "ESP": {
+      "file_n_unique": 58616,
+      "overlap_with_WT_sgRNAs": 0.9367,
+      "n_shared": 54908,
+      "domain_classifier_auc_sequence_disjoint": 0.506,
+      "domain_classifier_auc_random_rows": 0.488,
+      "covariate_shift_detectable": false,
+      "label_shift_on_shared_sequences": {
+        "n": 54908,
+        "mean_WT": 72.6,
+        "mean_target": 35.58,
+        "mean_difference": -37.02,
+        "sd_WT": 21.74,
+        "sd_target": 18.65,
+        "spearman_WT_vs_target": 0.744
+      },
+      "coverage_WT_calibrated": 0.182,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.908,
+          "ci95": [
+            0.68,
+            0.998
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.924,
+          "ci95": [
+            0.798,
+            0.99
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.905,
+          "ci95": [
+            0.825,
+            0.966
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.903,
+          "ci95": [
+            0.846,
+            0.949
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.859,
+            0.933
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.903,
+          "ci95": [
+            0.874,
+            0.925
+          ]
+        }
+      }
+    },
+    "HF": {
+      "file_n_unique": 56887,
+      "overlap_with_WT_sgRNAs": 0.9541,
+      "n_shared": 54278,
+      "domain_classifier_auc_sequence_disjoint": 0.506,
+      "domain_classifier_auc_random_rows": 0.488,
+      "covariate_shift_detectable": false,
+      "label_shift_on_shared_sequences": {
+        "n": 54278,
+        "mean_WT": 72.49,
+        "mean_target": 47.8,
+        "mean_difference": -24.69,
+        "sd_WT": 21.79,
+        "sd_target": 20.54,
+        "spearman_WT_vs_target": 0.726
+      },
+      "coverage_WT_calibrated": 0.509,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.917,
+          "ci95": [
+            0.733,
+            0.996
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.921,
+          "ci95": [
+            0.772,
+            0.99
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.904,
+          "ci95": [
+            0.81,
+            0.971
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.904,
+          "ci95": [
+            0.832,
+            0.946
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.861,
+            0.93
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.877,
+            0.921
+          ]
+        }
+      }
+    },
+    "HELA": {
+      "file_n_unique": 8101,
+      "overlap_with_WT_sgRNAs": 0.0352,
+      "n_shared": 285,
+      "domain_classifier_auc_sequence_disjoint": 0.943,
+      "domain_classifier_auc_random_rows": 0.946,
+      "covariate_shift_detectable": true,
+      "label_shift_on_shared_sequences": {
+        "n": 285,
+        "mean_WT": 78.84,
+        "mean_target": 34.53,
+        "mean_difference": -44.31,
+        "sd_WT": 17.08,
+        "sd_target": 19.34,
+        "spearman_WT_vs_target": 0.192
+      },
+      "coverage_WT_calibrated": 0.105,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.908,
+          "ci95": [
+            0.697,
+            0.998
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.918,
+          "ci95": [
+            0.789,
+            0.992
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.904,
+          "ci95": [
+            0.803,
+            0.963
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.9,
+          "ci95": [
+            0.843,
+            0.944
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.859,
+            0.932
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.9,
+          "ci95": [
+            0.872,
+            0.924
+          ]
+        }
+      }
+    },
+    "HCT116": {
+      "file_n_unique": 4239,
+      "overlap_with_WT_sgRNAs": 0.0434,
+      "n_shared": 184,
+      "domain_classifier_auc_sequence_disjoint": 0.943,
+      "domain_classifier_auc_random_rows": 0.941,
+      "covariate_shift_detectable": true,
+      "label_shift_on_shared_sequences": {
+        "n": 184,
+        "mean_WT": 77.77,
+        "mean_target": 33.2,
+        "mean_difference": -44.57,
+        "sd_WT": 18.05,
+        "sd_target": 18.37,
+        "spearman_WT_vs_target": 0.302
+      },
+      "coverage_WT_calibrated": 0.085,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.914,
+          "ci95": [
+            0.709,
+            0.998
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.925,
+          "ci95": [
+            0.81,
+            0.989
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.904,
+          "ci95": [
+            0.792,
+            0.969
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.832,
+            0.955
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.903,
+          "ci95": [
+            0.865,
+            0.932
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.867,
+            0.925
+          ]
+        }
+      }
+    },
+    "HL60": {
+      "file_n_unique": 2076,
+      "overlap_with_WT_sgRNAs": 0.04,
+      "n_shared": 83,
+      "domain_classifier_auc_sequence_disjoint": 0.851,
+      "domain_classifier_auc_random_rows": 0.847,
+      "covariate_shift_detectable": true,
+      "label_shift_on_shared_sequences": {
+        "n": 83,
+        "mean_WT": 70.49,
+        "mean_target": 26.15,
+        "mean_difference": -44.34,
+        "sd_WT": 23.94,
+        "sd_target": 9.02,
+        "spearman_WT_vs_target": 0.272
+      },
+      "coverage_WT_calibrated": 0.133,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.91,
+          "ci95": [
+            0.693,
+            0.998
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.925,
+          "ci95": [
+            0.808,
+            0.988
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.811,
+            0.967
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.902,
+          "ci95": [
+            0.829,
+            0.961
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.856,
+            0.933
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.902,
+          "ci95": [
+            0.872,
+            0.932
+          ]
+        }
+      }
+    },
+    "Sniper-Cas9": {
+      "file_n_unique": 23103,
+      "overlap_with_WT_sgRNAs": 0.0003,
+      "n_shared": 7,
+      "domain_classifier_auc_sequence_disjoint": 0.872,
+      "domain_classifier_auc_random_rows": 0.87,
+      "covariate_shift_detectable": true,
+      "coverage_WT_calibrated": 0.083,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.916,
+          "ci95": [
+            0.689,
+            0.997
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.922,
+          "ci95": [
+            0.797,
+            0.993
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.804,
+            0.965
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.9,
+          "ci95": [
+            0.836,
+            0.947
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.865,
+            0.933
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.874,
+            0.925
+          ]
+        }
+      }
+    },
+    "SpCas9-NG": {
+      "file_n_unique": 22976,
+      "overlap_with_WT_sgRNAs": 0.0003,
+      "n_shared": 6,
+      "domain_classifier_auc_sequence_disjoint": 0.872,
+      "domain_classifier_auc_random_rows": 0.87,
+      "covariate_shift_detectable": true,
+      "coverage_WT_calibrated": 0.01,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.918,
+          "ci95": [
+            0.709,
+            0.996
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.925,
+          "ci95": [
+            0.827,
+            0.992
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.906,
+          "ci95": [
+            0.809,
+            0.962
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.898,
+          "ci95": [
+            0.842,
+            0.951
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.899,
+          "ci95": [
+            0.858,
+            0.929
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.9,
+          "ci95": [
+            0.869,
+            0.924
+          ]
+        }
+      }
+    },
+    "xCas": {
+      "file_n_unique": 23138,
+      "overlap_with_WT_sgRNAs": 0.0003,
+      "n_shared": 7,
+      "domain_classifier_auc_sequence_disjoint": 0.871,
+      "domain_classifier_auc_random_rows": 0.873,
+      "covariate_shift_detectable": true,
+      "coverage_WT_calibrated": 0.051,
+      "recalibrated_on_target_labels": {
+        "n_target_labels=10": {
+          "mean_coverage": 0.914,
+          "ci95": [
+            0.733,
+            0.997
+          ]
+        },
+        "n_target_labels=25": {
+          "mean_coverage": 0.924,
+          "ci95": [
+            0.801,
+            0.985
+          ]
+        },
+        "n_target_labels=50": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.804,
+            0.959
+          ]
+        },
+        "n_target_labels=100": {
+          "mean_coverage": 0.901,
+          "ci95": [
+            0.851,
+            0.948
+          ]
+        },
+        "n_target_labels=250": {
+          "mean_coverage": 0.902,
+          "ci95": [
+            0.863,
+            0.93
+          ]
+        },
+        "n_target_labels=500": {
+          "mean_coverage": 0.9,
+          "ci95": [
+            0.871,
+            0.925
+          ]
+        }
+      }
+    }
+  },
+  "verdict": "ESP/HF are matched-input, shifted-label cells: the sgRNA sets are ~98% shared with WT, so the covariate-shift density ratio is 1 by construction and weighted conformal reduces to split conformal. The published 'weighting cannot repair the shift' conclusion is therefore untestable on those cells, not false; the genuinely shifted cells are HELA/HCT116/HL60 (3-4% overlap). On every cell the effective remedy is recalibration on a small number of target-domain labels, which is reported here as a cohort-size curve."
+}

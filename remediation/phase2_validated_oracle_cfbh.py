@@ -35,6 +35,8 @@ PROTO = 20
 QS = (0.10, 0.20)
 SEL_MC = 300
 SEED = 0
+TAU_ABS = 250.0            # pre-registered absolute tolerance (validated cleavage sites)
+TAU_COHORT_MEDIAN = False  # True reproduces the historical, test-label-derived threshold
 _LUT = np.full(256, -1, int)
 for _i, _c in enumerate("ACGT"):
     _LUT[ord(_c)] = _i
@@ -63,19 +65,25 @@ def _onehot(cm):
 
 def main():
     path = _find_circle()
-    df = pd.read_csv(path, usecols=["sgRNA_seq", "off_seq", "label"])
+    df = pd.read_csv(path, usecols=["sgRNA_seq", "off_seq", "label", "sgRNA_type"])
     df = df[(df["sgRNA_seq"].str.replace("_", "", regex=False).str.len() >= PROTO) &
             (df["off_seq"].str.len() >= PROTO)].reset_index(drop=True)
     G = _charmat(df["sgRNA_seq"]); O = _charmat(df["off_seq"])
     mism = (G != O).astype(np.float32); mm = mism.sum(1, keepdims=True)
     X = np.concatenate([mism, _onehot(G), _onehot(O), mm], axis=1).astype(np.float32)   # 20+80+80+1
     y = (df["label"].to_numpy() > 0).astype(int)
-    guide = df["sgRNA_seq"].str.replace("_", "", regex=False).to_numpy()
+    # GROUPING FIX (referee audit R1, 2026-10-14): `sgRNA_seq` is the per-row ALIGNED on-target
+    # string; stripping "_" gives 80 strings = 10 real protospacers x 8 representations (4 PAM
+    # variants x 2 gap placements), and because features use only the first 20 nt the previous
+    # grouping trained and tested on identical guide features. `sgRNA_type` (10 values) is the
+    # real guide. The cohort is therefore n=10, not n=80; see audit/a1_regrouped_oracle_cfbh.py
+    # for the leak-free refit and the consequences for every number below.
+    guide = df["sgRNA_type"].str.strip().to_numpy()
     guides = np.unique(guide)
 
     # ---- (A) richer oracle, guide-disjoint CV -> OOF probs ----
     oof = np.zeros(len(y))
-    for tr, te in GroupKFold(n_splits=5).split(X, y, groups=guide):
+    for tr, te in GroupKFold(n_splits=min(5, len(guides))).split(X, y, groups=guide):
         clf = HistGradientBoostingClassifier(max_iter=150, max_depth=6, learning_rate=0.08,
                                              min_samples_leaf=50, random_state=42)
         clf.fit(X[tr], y[tr]); oof[te] = clf.predict_proba(X[te])[:, 1]
@@ -92,10 +100,21 @@ def main():
         HERE / "results" / "phase2_burdens.csv", index=False)
 
     # ---- (B) REAL-DATA cfBH off-target-only selection (validated truth) ----
+    # EXCHANGEABILITY CAVEAT (referee audit R8): T_hat below is built from OUT-OF-FOLD
+    # predictions over the same guides that are then resplit into calibration and test, so the
+    # score function is not independent of the calibration sample and Prop. 2's exchangeability
+    # premise is not strictly met. A clean design needs three disjoint guide sets
+    # (fit / calibrate / test); with 10 real guides that is not attainable, which is itself the
+    # finding to report.
     # design criterion OK(guide) := validated_burden <= tau_off  (select provably-safe guides).
     # Target on the LOG1P scale (as the main pipeline models off-target) so the heavy tail does not
     # inflate the standardization and crush the predictor's dynamic range.
-    tau = float(np.median(true_burden))
+    # TOLERANCE FIX (referee audit R6): the previous `tau = median(true_burden)` was computed
+    # over the whole cohort, including the guides used as the test split, so the design
+    # constraint was defined by the labels it was then evaluated against (and OK was ~50% by
+    # construction). TAU_ABS is a pre-registered absolute tolerance in validated cleavage
+    # sites; set TAU_COHORT_MEDIAN=True only to reproduce the historical number.
+    tau = float(np.median(true_burden)) if TAU_COHORT_MEDIAN else TAU_ABS
     zt, zp, ztau = np.log1p(true_burden), np.log1p(pred_burden), np.log1p(tau)
     s = float(zt.std()) or 1.0
     T_true = (ztau - zt) / s                                           # OK <=> burden<=tau <=> T_true>=0

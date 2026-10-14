@@ -47,6 +47,14 @@ def _mism_feats(mm):
 
 
 def circle_clf():
+    """CIRCLE-trained per-site classifier using the MISMATCH COUNT ALONE (1 feature).
+
+    PROVENANCE FIX (referee audit R9, 2026-10-14): this is NOT the 181-feature oracle used in
+    phase 2 and phase 9. Because both scripts reported "SITE-Seq burden rho" from different
+    predictors, external_replication.json carried rho = 0.433 (phase 9, 181 features) and
+    rho = 0.70 (here, mismatch count only) for what reads as one quantity. Any report must name
+    the predictor; the key emitted below does.
+    """
     f = list(DS.glob("I_1_CIRCLE_seq*csv"))[0]
     c = pd.read_csv(f, usecols=["sgRNA_seq", "off_seq", "label"])
     c = c[(c["sgRNA_seq"].str.len() >= PROTO) & (c["off_seq"].str.len() >= PROTO)].reset_index(drop=True)
@@ -58,6 +66,8 @@ def circle_clf():
 
 
 def cfbh_mc(true_b, pred, q):
+    # TOLERANCE CAVEAT (referee audit R6): tau is the cohort median of the labels this cell is then
+    # evaluated against, so OK is ~50% by construction and the threshold is not a safety criterion.
     tau = float(np.median(true_b)); ok = true_b <= tau; s = float(np.log1p(true_b).std()) or 1.0
     T_true = (np.log1p(tau) - np.log1p(true_b)) / s; T_hat = (np.log1p(tau) - np.log1p(np.clip(pred, 0, None))) / s
     n = len(true_b); n_cal = int(round(0.66 * n)); rng = np.random.default_rng(SEED); F, W = [], []
@@ -95,7 +105,9 @@ def evaluate_assay(name, path, gcol, ocol, labelfn, clf):
     rho_zs = float(spearmanr(zs_burden, true_b).statistic)
     rho_in = float(spearmanr(ins_burden, true_b).statistic)
     out = {"n_guides": len(true_b), "n_validated": int(y.sum()),
-           "rho_zero_shot": round(rho_zs, 3), "rho_in_assay_recal": round(rho_in, 3)}
+           "rho_zero_shot_mmcount_oracle": round(rho_zs, 3),
+           "rho_in_assay_recal_mmbin_ridge": round(rho_in, 3),
+           "predictor_note": "zero-shot = CIRCLE mismatch-count classifier (1 feature); in-assay = ridge on per-guide mismatch-bin counts. Neither is the 181-feature phase-2 oracle."}
     if len(true_b) >= 12:  # cfBH only where a cal/test split is meaningful
         out["cfbh"] = {f"q={q}": {"zero_shot": cfbh_mc(true_b, zs_burden, q),
                                   "in_assay_recal": cfbh_mc(true_b, ins_burden, q)} for q in QS}

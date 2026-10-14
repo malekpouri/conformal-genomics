@@ -1,0 +1,162 @@
+{
+  "alignment_spec": {
+    "genome_build": "GRCh38/hg38 (hg38.fa.gz, UCSC)",
+    "chromosome_scanned": "chr22",
+    "pam": "NGG, both strands (forward: 5'-protospacer(20)+NGG-3'; reverse: revcomp of CCN+20)",
+    "mismatch_budget": "<= 3 over the 20-nt protospacer",
+    "bulges": "none -- DNA/RNA bulges are not enumerated (mismatch-only regime)",
+    "orientation": "both strands scanned independently",
+    "ambiguous_bases": "windows containing any non-ACGT base are discarded",
+    "on_target_self_hit": "the 0-mismatch self hit is retained (generated guides are novel, so it is not guaranteed to exist)",
+    "method": "exhaustive PAM scan + 2-bit packing + bit-parallel Hamming distance (np.bitwise_count); equivalent to a Cas-OFFinder mm<=3 search restricted to chr22"
+  },
+  "generator": {
+    "corpus": "CRISPR_HNN WT spacers",
+    "n_corpus": 55603,
+    "n_generated": 2000,
+    "novel_frac": 1.0
+  },
+  "chromosome": {
+    "name": "chr22",
+    "n_bases": 50818468,
+    "n_pam_sites_enumerated": 5295032
+  },
+  "site_oracle": {
+    "training_pairs_mismatch_only": 332070,
+    "validated_positives": 7031,
+    "note": "bulge-annotated rows are excluded rather than silently stripped"
+  },
+  "generated_guides_aligned": {
+    "mm_le_3_sites_per_guide": {
+      "median": 0.0,
+      "min": 0,
+      "max": 24
+    },
+    "aligned_burden_chr22": {
+      "median": 0.0,
+      "p90": 0.086,
+      "max": 4.9556
+    },
+    "note": "burden is restricted to chr22; a full-genome figure is ~50x larger and requires the same scan over all chromosomes"
+  },
+  "circle_cohort_aligned_same_scale": {
+    "n_guides": 10,
+    "mm_le_3_sites_per_guide_median": 1.0,
+    "aligned_burden_median": 0.1989,
+    "validated_burden_median": 352.0
+  },
+  "certification": {
+    "tau=100": {
+      "tau_absolute_validated_sites": 100.0,
+      "n_cal": 10,
+      "m_candidates": 2000,
+      "min_pvalue_observed": 1.0,
+      "n_candidates_at_minimal_p": 0,
+      "q=0.1": {
+        "n_selected": 0,
+        "accept_rate": 0.0,
+        "n_cal": 10,
+        "m_candidates": 2000,
+        "q": 0.1,
+        "min_attainable_pvalue": 0.090909,
+        "k_min_candidates_at_minimal_p_for_any_selection": 1819,
+        "selection_possible_in_principle": true,
+        "n_cal_required_to_select_one": 19999
+      },
+      "q=0.2": {
+        "n_selected": 0,
+        "accept_rate": 0.0,
+        "n_cal": 10,
+        "m_candidates": 2000,
+        "q": 0.2,
+        "min_attainable_pvalue": 0.090909,
+        "k_min_candidates_at_minimal_p_for_any_selection": 910,
+        "selection_possible_in_principle": true,
+        "n_cal_required_to_select_one": 9999
+      },
+      "scale_diagnostic": {
+        "cal_validated_burden_genomewide_median": 352.0,
+        "cal_aligned_burden_chr22_median": 0.1989,
+        "candidate_aligned_burden_chr22_median": 0.0,
+        "footprint_mismatch": "calibration TRUTH is genome-wide validated cleavage while both T_hat values are chr22-restricted predictions; the public file carries no site coordinates, so the truth cannot be restricted to the scanned footprint",
+        "consequence": "observed minimum p-value 1.000 vs the attainable minimum 0.091; 0 of 2000 candidates attain it, against the k_min required for any selection. The two failure modes of this loop are symmetric: too few calibration guides relative to the pool size makes the accepted set empty, while a calibration cohort whose truth is measured on a different footprint than the candidates' scores can make it everything. Both are exchangeability failures, not oracle failures."
+      }
+    },
+    "tau=250": {
+      "tau_absolute_validated_sites": 250.0,
+      "n_cal": 10,
+      "m_candidates": 2000,
+      "min_pvalue_observed": 0.727273,
+      "n_candidates_at_minimal_p": 0,
+      "q=0.1": {
+        "n_selected": 0,
+        "accept_rate": 0.0,
+        "n_cal": 10,
+        "m_candidates": 2000,
+        "q": 0.1,
+        "min_attainable_pvalue": 0.090909,
+        "k_min_candidates_at_minimal_p_for_any_selection": 1819,
+        "selection_possible_in_principle": true,
+        "n_cal_required_to_select_one": 19999
+      },
+      "q=0.2": {
+        "n_selected": 0,
+        "accept_rate": 0.0,
+        "n_cal": 10,
+        "m_candidates": 2000,
+        "q": 0.2,
+        "min_attainable_pvalue": 0.090909,
+        "k_min_candidates_at_minimal_p_for_any_selection": 910,
+        "selection_possible_in_principle": true,
+        "n_cal_required_to_select_one": 9999
+      },
+      "scale_diagnostic": {
+        "cal_validated_burden_genomewide_median": 352.0,
+        "cal_aligned_burden_chr22_median": 0.1989,
+        "candidate_aligned_burden_chr22_median": 0.0,
+        "footprint_mismatch": "calibration TRUTH is genome-wide validated cleavage while both T_hat values are chr22-restricted predictions; the public file carries no site coordinates, so the truth cannot be restricted to the scanned footprint",
+        "consequence": "observed minimum p-value 0.727 vs the attainable minimum 0.091; 0 of 2000 candidates attain it, against the k_min required for any selection. The two failure modes of this loop are symmetric: too few calibration guides relative to the pool size makes the accepted set empty, while a calibration cohort whose truth is measured on a different footprint than the candidates' scores can make it everything. Both are exchangeability failures, not oracle failures."
+      }
+    }
+  },
+  "feasibility_bound": {
+    "rule": "a non-empty BH selection requires ceil(m/(q*(n_cal+1))) candidates at the minimal conformal p-value 1/(n_cal+1)",
+    "published_setup_n_cal80_m2000_q0.10": {
+      "n_cal": 80,
+      "m_candidates": 2000,
+      "q": 0.1,
+      "min_attainable_pvalue": 0.012346,
+      "k_min_candidates_at_minimal_p_for_any_selection": 247,
+      "selection_possible_in_principle": true,
+      "n_cal_required_to_select_one": 19999
+    },
+    "honest_cohort_n_cal10_m2000_q0.10": {
+      "n_cal": 10,
+      "m_candidates": 2000,
+      "q": 0.1,
+      "min_attainable_pvalue": 0.090909,
+      "k_min_candidates_at_minimal_p_for_any_selection": 1819,
+      "selection_possible_in_principle": true,
+      "n_cal_required_to_select_one": 19999
+    },
+    "shortlist_m10_q0.10": {
+      "n_cal": 10,
+      "m_candidates": 10,
+      "q": 0.1,
+      "min_attainable_pvalue": 0.090909,
+      "k_min_candidates_at_minimal_p_for_any_selection": 10,
+      "selection_possible_in_principle": true,
+      "n_cal_required_to_select_one": 99
+    },
+    "shortlist_m50_q0.10": {
+      "n_cal": 10,
+      "m_candidates": 50,
+      "q": 0.1,
+      "min_attainable_pvalue": 0.090909,
+      "k_min_candidates_at_minimal_p_for_any_selection": 46,
+      "selection_possible_in_principle": true,
+      "n_cal_required_to_select_one": 499
+    }
+  },
+  "verdict": "The loop now runs end to end on real alignment output: generated guides are enumerated against chr22 under an explicit mm<=3/NGG spec and scored per site by the CIRCLE-trained oracle. The published accept rate of 0.0 is nevertheless not an oracle property: with a calibration cohort of 10 real guides (or even 80 pseudo-guides), BH over a 2,000-candidate pool cannot reject at q=0.10 unless a large fraction of the pool attains the minimal conformal p-value. Certified selection from generative pools requires n_cal >= m/q - 1 validated calibration guides, so the deployable regime is a SHORT candidate shortlist, not a large generated pool. Conversely, when the calibration cohort's truth and the candidates' scores are measured on different footprints (genome-wide validated cleavage vs a chr22-restricted scan), every candidate attains the minimal p-value and BH accepts the entire pool: the certificate is only as meaningful as the exchangeability of the calibration and candidate pairs, and a deployable loop therefore needs validated truth WITH SITE COORDINATES so that both sides share one measurement footprint."
+}

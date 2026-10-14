@@ -57,7 +57,7 @@ def main():
     path = _find_circle()
     if path is None:
         print("CIRCLE-seq file not found"); return
-    df = pd.read_csv(path, usecols=["sgRNA_seq", "off_seq", "label"])
+    df = pd.read_csv(path, usecols=["sgRNA_seq", "off_seq", "label", "sgRNA_type"])
     df = df[(df["sgRNA_seq"].str.replace("_", "", regex=False).str.len() >= PROTO) &
             (df["off_seq"].str.len() >= PROTO)].reset_index(drop=True)
     G = _proto(df["sgRNA_seq"]); O = _proto(df["off_seq"])
@@ -65,12 +65,18 @@ def main():
     mm = mism.sum(1)                                        # total mismatch count
     X = np.column_stack([mism, mm])                        # 21 features
     y = (df["label"].to_numpy() > 0).astype(int)
-    guide = df["sgRNA_seq"].str.replace("_", "", regex=False).to_numpy()
+    # GROUPING FIX (referee audit R1, 2026-10-14): `sgRNA_seq` is the per-row ALIGNED
+    # on-target string, so stripping "_" yields 80 distinct strings = 10 real protospacers x 8
+    # representations (4 PAM variants x 2 gap placements). Feature extraction truncates to the
+    # first 20 nt, so grouping on it put bit-identical guide features in both sides of a
+    # "guide-disjoint" split. `sgRNA_type` is the canonical on-target (10 values) and is the
+    # real unit of analysis. See audit/a1_regrouped_oracle_cfbh.py.
+    guide = df["sgRNA_type"].str.strip().to_numpy()
     n_guides = len(np.unique(guide))
 
     # ---- guide-disjoint CV: out-of-fold P(validated) ----
     oof = np.zeros(len(y))
-    gkf = GroupKFold(n_splits=5)
+    gkf = GroupKFold(n_splits=min(5, n_guides))
     for tr, te in gkf.split(X, y, groups=guide):
         clf = HistGradientBoostingClassifier(max_iter=200, max_depth=4, learning_rate=0.08,
                                              min_samples_leaf=50, random_state=42)

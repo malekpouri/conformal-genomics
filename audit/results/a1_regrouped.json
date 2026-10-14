@@ -1,0 +1,523 @@
+{
+  "A_grouping_defect": {
+    "pipeline_group_key": "sgRNA_seq with '_' removed",
+    "n_pipeline_groups": 80,
+    "correct_group_key": "sgRNA_type (canonical on-target, NGG)",
+    "n_real_guides": 10,
+    "n_distinct_20mers_after_stripping_gaps": 10,
+    "pipeline_groups_per_real_guide": [
+      8
+    ],
+    "guide_side_features_identical_across_folds": true,
+    "note": "the 8 representations of one guide differ only in the PAM written into the on-target string and in gap placement; feature extraction truncates to the first 20 nt, so GroupKFold on the pipeline key trains and tests on the identical guide feature vector"
+  },
+  "B_oracle_leakfree_vs_published": {
+    "leak_free": {
+      "cv": "leave-one-REAL-guide-out (n=10)",
+      "pooled_roc_auc": 0.762,
+      "pooled_average_precision": 0.034,
+      "within_guide_roc_auc_mean": 0.826,
+      "within_guide_roc_auc_ci95": [
+        0.792,
+        0.851
+      ],
+      "within_guide_average_precision_mean": 0.059,
+      "within_guide_average_precision_ci95": [
+        0.028,
+        0.111
+      ],
+      "n_folds": 10,
+      "positive_rate": 0.0126
+    },
+    "published_leaky": {
+      "cv": "GroupKFold(5) on the 80 pseudo-guides (the published setup, verbatim)",
+      "pooled_roc_auc": 0.925,
+      "pooled_average_precision": 0.281,
+      "within_guide_roc_auc_mean": 0.86,
+      "within_guide_roc_auc_ci95": [
+        0.662,
+        0.95
+      ],
+      "within_guide_average_precision_mean": 0.128,
+      "within_guide_average_precision_ci95": [
+        0.004,
+        0.386
+      ],
+      "n_folds": 5,
+      "positive_rate": 0.0126
+    },
+    "published_reported": {
+      "roc_auc": 0.925,
+      "average_precision": 0.281
+    }
+  },
+  "C_burden_fidelity_per_real_guide": {
+    "ml_oracle_leakfree": {
+      "rho_spearman": 0.018,
+      "rho_ci95_guide_bootstrap": [
+        -0.8,
+        0.66
+      ],
+      "n_guides": 10
+    },
+    "ml_oracle_published_leaky": {
+      "rho_spearman": 1.0,
+      "rho_ci95_guide_bootstrap": [
+        1.0,
+        1.0
+      ],
+      "n_guides": 10
+    },
+    "baseline_candidate_site_count": {
+      "rho_spearman": 0.964,
+      "rho_ci95_guide_bootstrap": [
+        0.787,
+        1.0
+      ],
+      "n_guides": 10
+    },
+    "baseline_mm3_site_count": {
+      "rho_spearman": 0.939,
+      "rho_ci95_guide_bootstrap": [
+        0.686,
+        1.0
+      ],
+      "n_guides": 10
+    }
+  },
+  "C_published_reported_burden_rho_over_80_pseudo_guides": 0.944,
+  "D_cfbh_real_guide_level": {
+    "tau=100": {
+      "tau_absolute_validated_sites": 100.0,
+      "n_ok": 0,
+      "ok_fraction": 0.0,
+      "ml_oracle_leakfree|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": null,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      }
+    },
+    "tau=250": {
+      "tau_absolute_validated_sites": 250.0,
+      "n_ok": 3,
+      "ok_fraction": 0.3,
+      "ml_oracle_leakfree|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      }
+    },
+    "tau=500": {
+      "tau_absolute_validated_sites": 500.0,
+      "n_ok": 6,
+      "ok_fraction": 0.6,
+      "ml_oracle_leakfree|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "ml_oracle_leakfree|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0041,
+        "FAR_le_q": true,
+        "mean_power": 0.0055,
+        "mean_precision": 0.25,
+        "mean_yield": 0.0055,
+        "mean_n_selected": 0.022,
+        "frac_splits_with_empty_selection": 0.995
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0333,
+        "k_min_candidates_at_minimal_p_for_any_selection": 4,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.1|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.025,
+        "k_min_candidates_at_minimal_p_for_any_selection": 6,
+        "selection_possible_in_principle": false,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0,
+        "mean_precision": null,
+        "mean_yield": 0.0,
+        "mean_n_selected": 0.0,
+        "frac_splits_with_empty_selection": 1.0
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=3": {
+        "n_cal": 7,
+        "n_test": 3,
+        "min_attainable_pvalue": 0.125,
+        "bh_threshold_for_smallest_p": 0.0667,
+        "k_min_candidates_at_minimal_p_for_any_selection": 2,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0345,
+        "mean_precision": 1.0,
+        "mean_yield": 0.0223,
+        "mean_n_selected": 0.067,
+        "frac_splits_with_empty_selection": 0.967
+      },
+      "baseline_mm3_site_count|q=0.2|m_test=4": {
+        "n_cal": 6,
+        "n_test": 4,
+        "min_attainable_pvalue": 0.1429,
+        "bh_threshold_for_smallest_p": 0.05,
+        "k_min_candidates_at_minimal_p_for_any_selection": 3,
+        "selection_possible_in_principle": true,
+        "mean_FAR": 0.0,
+        "FAR_le_q": true,
+        "mean_power": 0.0151,
+        "mean_precision": 1.0,
+        "mean_yield": 0.0112,
+        "mean_n_selected": 0.045,
+        "frac_splits_with_empty_selection": 0.985
+      }
+    }
+  },
+  "E_structural_feasibility_bound": {
+    "rule": "conformal p-values are bounded below by 1/(n_cal+1); BH rejects the k-th smallest only if p_(k) <= q*k/m, so a non-empty selection needs at least k_min = ceil(m/(q*(n_cal+1))) candidates AT the minimal p-value",
+    "implies": "to certify a single candidate (k=1): n_cal >= m/q - 1",
+    "table": {
+      "q=0.1": {
+        "m_test=1": {
+          "min_n_cal_required": 9,
+          "min_total_guides_required": 10
+        },
+        "m_test=3": {
+          "min_n_cal_required": 29,
+          "min_total_guides_required": 32
+        },
+        "m_test=4": {
+          "min_n_cal_required": 39,
+          "min_total_guides_required": 43
+        },
+        "m_test=10": {
+          "min_n_cal_required": 99,
+          "min_total_guides_required": 109
+        },
+        "m_test=27": {
+          "min_n_cal_required": 269,
+          "min_total_guides_required": 296
+        }
+      },
+      "q=0.2": {
+        "m_test=1": {
+          "min_n_cal_required": 4,
+          "min_total_guides_required": 5
+        },
+        "m_test=3": {
+          "min_n_cal_required": 14,
+          "min_total_guides_required": 17
+        },
+        "m_test=4": {
+          "min_n_cal_required": 19,
+          "min_total_guides_required": 23
+        },
+        "m_test=10": {
+          "min_n_cal_required": 49,
+          "min_total_guides_required": 59
+        },
+        "m_test=27": {
+          "min_n_cal_required": 134,
+          "min_total_guides_required": 161
+        }
+      }
+    },
+    "published_setup": {
+      "n_cal": 53,
+      "n_test": 27,
+      "min_attainable_p": 0.0185,
+      "bh_threshold_smallest_p_q0.10": 0.0037,
+      "feasible": false
+    }
+  }
+}

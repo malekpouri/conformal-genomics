@@ -117,13 +117,67 @@ def nuclease_transfer(wt):
 
 # ── (C) domain UQ baselines ───────────────────────────────────────────────────
 class MLP(nn.Module):
-    def __init__(self, p=0.0):
+    """Point net, or (heteroscedastic=True) a Gaussian mean+log-variance head.
+
+    UQ-BASELINE FIX (referee audit R4, 2026-10-14): the original baselines formed intervals as
+    mu +- z*sd(member means), i.e. epistemic spread with NO aleatoric term, which forces
+    under-coverage regardless of model quality (published coverage 0.024 at nominal 0.90, mean
+    width 0.95 on a 0-100 scale). Deep ensembles (Lakshminarayanan et al. 2017) and MC-dropout
+    (Gal & Ghahramani 2016) both include a predictive-noise term; the log-variance head below
+    supplies it. See audit/a2_uq_baselines_fixed.py for the full side-by-side.
+    """
+
+    def __init__(self, p=0.0, heteroscedastic=False):
         super().__init__()
-        self.net = nn.Sequential(nn.Linear(80, 128), nn.ReLU(), nn.Dropout(p),
-                                 nn.Linear(128, 64), nn.ReLU(), nn.Dropout(p), nn.Linear(64, 1))
+        self.het = heteroscedastic
+        self.trunk = nn.Sequential(nn.Linear(80, 128), nn.ReLU(), nn.Dropout(p),
+                                   nn.Linear(128, 64), nn.ReLU(), nn.Dropout(p))
+        self.mu = nn.Linear(64, 1)
+        self.logvar = nn.Linear(64, 1) if heteroscedastic else None
 
     def forward(self, x):
-        return self.net(x)
+        h = self.trunk(x)
+        if not self.het:
+            return self.mu(h)
+        return self.mu(h), self.logvar(h).clamp(-6.0, 4.0)
+
+
+def _train_nll(Xtr, ytr, p=0.0, epochs=20, seed=0, warmup=5):
+    """Gaussian-NLL training on STANDARDISED targets with an MSE warm-up on the mean head.
+
+    NLL on raw 0-100 targets at lr 2e-3 drives the variance head to its clamp (the loss is reduced
+    early by inflating sigma, after which the gradient on mu vanishes), so the baseline has to be
+    trained this way to be a fair one.
+    """
+    torch.manual_seed(seed)
+    ym, ys = float(np.mean(ytr)), float(np.std(ytr)) or 1.0
+    m = MLP(p, heteroscedastic=True).to(DEV); opt = torch.optim.Adam(m.parameters(), 2e-3)
+    xt = torch.tensor(Xtr, dtype=torch.float32, device=DEV)
+    yt = torch.tensor((ytr - ym) / ys, dtype=torch.float32, device=DEV).unsqueeze(1)
+    idx = np.arange(len(Xtr))
+    for ep in range(epochs):
+        np.random.shuffle(idx)
+        for b in range(0, len(idx), 2048):
+            j = idx[b:b + 2048]
+            opt.zero_grad(); mu, lv = m(xt[j])
+            loss = ((0.5 * lv + 0.5 * (yt[j] - mu) ** 2 / lv.exp()).mean() if ep >= warmup
+                    else ((yt[j] - mu) ** 2).mean())
+            loss.backward(); opt.step()
+    m._ym, m._ys = ym, ys
+    return m
+
+
+@torch.no_grad()
+def _predict_nll(m, X, train_mode=False, reps=1):
+    """(mu, var) in original label units, averaged over `reps` stochastic passes."""
+    m.train() if train_mode else m.eval()
+    xt = torch.tensor(X, dtype=torch.float32, device=DEV)
+    mus, vs = [], []
+    for _ in range(reps):
+        mu, lv = m(xt)
+        mus.append(mu.cpu().numpy().ravel() * m._ys + m._ym)
+        vs.append(lv.exp().cpu().numpy().ravel() * m._ys ** 2)
+    return np.stack(mus), np.stack(vs)
 
 
 def _train_mlp(Xtr, ytr, p=0.0, epochs=15, seed=0):
@@ -161,8 +215,34 @@ def uq_baselines(wt):
     # conformalized ensemble: conformalize the ensemble-mean residual on cal -> exact coverage
     q = conformal_quantile(np.abs(y[ca] - mu_ca), ALPHA)
     cov_conf = cover(y[te], mu_te - q, mu_te + q)
+
+    # ---- corrected baselines with a predictive-noise term (referee audit R4) ----
+    nll_mu, nll_var = [], []
+    for k in range(5):
+        mk = _train_nll(X[tr], y[tr], p=0.0, seed=100 + k)
+        mu_k, v_k = _predict_nll(mk, X[te])
+        nll_mu.append(mu_k[0]); nll_var.append(v_k[0])
+    nll_mu = np.stack(nll_mu); nll_var = np.stack(nll_var)
+    mix_mu = nll_mu.mean(0)
+    mix_var = (nll_var + nll_mu ** 2).mean(0) - mix_mu ** 2          # mixture predictive variance
+    sd_mix = np.sqrt(np.maximum(mix_var, 0.0))
+    cov_ens_fixed = cover(y[te], mix_mu - z * sd_mix, mix_mu + z * sd_mix)
+    # MC-dropout with the observation-noise term estimated on the calibration split
+    tau_inv = max(float(np.mean((y[ca] - mu_ca) ** 2) - np.mean(ens_ca.var(0))), 1e-6)
+    sd_md_fixed = np.sqrt(sd_md ** 2 + tau_inv)
+    cov_md_fixed = cover(y[te], mu_md - z * sd_md_fixed, mu_md + z * sd_md_fixed)
+
     width = lambda lo_hi: float(np.mean(lo_hi))
     return {"nominal": 1-ALPHA,
+            "deep_ensemble_K5_corrected_nll_mixture": {
+                "coverage": round(cov_ens_fixed, 3),
+                "mean_width": round(float(np.mean(2 * z * sd_mix)), 2)},
+            "mc_dropout_T20_corrected_obs_noise": {
+                "coverage": round(cov_md_fixed, 3),
+                "mean_width": round(float(np.mean(2 * z * sd_md_fixed)), 2)},
+            "note_epistemic_only_arms_are_misspecified": (
+                "the two arms below omit the aleatoric term and are retained only to reproduce the "
+                "originally published numbers; they are not valid baselines"),
             "deep_ensemble_K5": {"coverage": round(cov_ens, 3), "mean_width": round(float(np.mean(2*z*sd_te)), 2)},
             "mc_dropout_T20": {"coverage": round(cov_md, 3), "mean_width": round(float(np.mean(2*z*sd_md)), 2)},
             "conformalized_ensemble": {"coverage": round(cov_conf, 3), "mean_width": round(float(2*q), 2)}}

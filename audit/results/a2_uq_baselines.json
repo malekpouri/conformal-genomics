@@ -1,0 +1,58 @@
+{
+  "dataset": {
+    "source": "CRISPR_HNN WT indel (%)",
+    "n": 55603,
+    "n_train": 33361,
+    "n_cal": 11121,
+    "n_test": 11121
+  },
+  "nominal": 0.9,
+  "label_sd": 21.76,
+  "deep_ensemble_published_verbatim_recipe": {
+    "method": "phase4 recipe verbatim: MSE members on raw targets, mu +- z*sd(member means)",
+    "coverage": 0.024,
+    "mean_width": 0.95
+  },
+  "mc_dropout_published_verbatim_recipe": {
+    "method": "phase4 recipe verbatim: MSE dropout net, mu +- z*sd(T passes)",
+    "coverage": 0.545,
+    "mean_width": 23.43
+  },
+  "deep_ensemble_published_epistemic_only": {
+    "method": "mu +- z*sd(member means), MSE members (as published)",
+    "coverage": 0.366,
+    "mean_width": 10.16
+  },
+  "deep_ensemble_corrected_gaussian_nll_mixture": {
+    "method": "Gaussian-NLL deep ensemble, mixture predictive variance",
+    "coverage": 0.911,
+    "mean_width": 35.68
+  },
+  "mc_dropout_published_epistemic_only": {
+    "method": "mu +- z*sd(T stochastic passes) (as published)",
+    "coverage": 0.419,
+    "mean_width": 12.18
+  },
+  "mc_dropout_corrected_with_observation_noise": {
+    "method": "MC-dropout predictive variance incl. observation noise (tau^-1 from calibration split)",
+    "coverage": 0.919,
+    "mean_width": 40.76,
+    "tau_inverse": 137.07
+  },
+  "mc_dropout_corrected_nll_head": {
+    "method": "MC-dropout with Gaussian-NLL head: E[sigma^2] + Var[mu]",
+    "coverage": 0.943,
+    "mean_width": 41.66
+  },
+  "conformalized_mse_ensemble_mean": {
+    "method": "split conformal on the MSE ensemble mean",
+    "coverage": 0.903,
+    "mean_width": 37.81
+  },
+  "conformalized_nll_ensemble_normalised": {
+    "method": "split conformal with a variance-normalised score on the NLL ensemble",
+    "coverage": 0.905,
+    "mean_width": 34.72,
+    "note": "adaptive width; conformal's remaining advantage is validity without a distributional assumption, not a coverage gap"
+  }
+}

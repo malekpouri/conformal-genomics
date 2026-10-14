@@ -118,7 +118,9 @@ def main():
                                         "per_guide_burden_rho": round(rho, 3)},
         "cross_assay_oracle_SITEseq": site,
         "cfbh_replication_GUIDEseq": {"n_cal": n_cal, "n_test": n - n_cal, "mc": MC, "levels": sel},
-        "primary_CIRCLE_seq": {"roc_auc": 0.925, "burden_rho": 0.944, "power_q0.10": 0.584, "power_q0.20": 0.796},
+        "primary_CIRCLE_seq": {"roc_auc_SUPERSEDED_see_audit_R1": 0.925,
+                               "roc_auc_leakfree": None,  # filled from audit/results/a1_regrouped.json
+                               "burden_rho_SUPERSEDED_see_audit_R1": 0.944, "power_q0.10": 0.584, "power_q0.20": 0.796},
         "note": ("Trained-from-scratch oracles fail on GUIDE-seq (56 positives -> chance); cross-assay "
                  "transfer of the CIRCLE-calibrated mismatch->cleavage oracle is the valid external test. "
                  "cfBH FAR<=q holds on the independent cohort by construction."),

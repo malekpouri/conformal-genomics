@@ -1,0 +1,123 @@
+{
+  "cohort": {
+    "n_pairs": 584949,
+    "n_validated": 7371,
+    "prevalence": 0.0126,
+    "n_real_guides": 10,
+    "grouping": "sgRNA_type (real guide)"
+  },
+  "baselines": {
+    "mismatch_count": {
+      "baseline": "mismatch_count",
+      "pooled_roc_auc": 0.696,
+      "pooled_average_precision": 0.026,
+      "within_guide_roc_auc_mean": 0.725,
+      "within_guide_roc_auc_range": [
+        0.587,
+        0.864
+      ],
+      "within_guide_average_precision_mean": 0.028,
+      "n_guides_scored": 10
+    },
+    "mit_hsu_2013": {
+      "baseline": "mit_hsu_2013",
+      "pooled_roc_auc": 0.783,
+      "pooled_average_precision": 0.04,
+      "within_guide_roc_auc_mean": 0.8,
+      "within_guide_roc_auc_range": [
+        0.736,
+        0.852
+      ],
+      "within_guide_average_precision_mean": 0.047,
+      "n_guides_scored": 10
+    },
+    "position_substitution_logreg": {
+      "baseline": "position_substitution_logreg",
+      "pooled_roc_auc": 0.747,
+      "pooled_average_precision": 0.03,
+      "within_guide_roc_auc_mean": 0.799,
+      "within_guide_roc_auc_range": [
+        0.704,
+        0.844
+      ],
+      "within_guide_average_precision_mean": 0.041,
+      "n_guides_scored": 10
+    },
+    "manuscript_oracle_181feat": {
+      "baseline": "manuscript_oracle_181feat",
+      "pooled_roc_auc": 0.762,
+      "pooled_average_precision": 0.034,
+      "within_guide_roc_auc_mean": 0.826,
+      "within_guide_roc_auc_range": [
+        0.789,
+        0.852
+      ],
+      "within_guide_average_precision_mean": 0.059,
+      "n_guides_scored": 10
+    },
+    "mismatch_pattern_oracle_21feat": {
+      "baseline": "mismatch_pattern_oracle_21feat",
+      "pooled_roc_auc": 0.79,
+      "pooled_average_precision": 0.045,
+      "within_guide_roc_auc_mean": 0.821,
+      "within_guide_roc_auc_range": [
+        0.745,
+        0.867
+      ],
+      "within_guide_average_precision_mean": 0.061,
+      "n_guides_scored": 10
+    }
+  },
+  "burden_fidelity": {
+    "baseline_candidate_site_count": {
+      "rho_spearman": 0.964,
+      "rho_ci95_guide_bootstrap": [
+        0.787,
+        1.0
+      ],
+      "n_guides": 10
+    },
+    "baseline_mm3_site_count": {
+      "rho_spearman": 0.939,
+      "rho_ci95_guide_bootstrap": [
+        0.686,
+        1.0
+      ],
+      "n_guides": 10
+    },
+    "mit_hsu_2013": {
+      "rho_spearman": 0.915,
+      "rho_ci95_guide_bootstrap": [
+        0.615,
+        1.0
+      ],
+      "n_guides": 10
+    },
+    "position_substitution_logreg": {
+      "rho_spearman": 0.539,
+      "rho_ci95_guide_bootstrap": [
+        -0.06,
+        0.868
+      ],
+      "n_guides": 10
+    },
+    "manuscript_oracle_181feat": {
+      "rho_spearman": 0.018,
+      "rho_ci95_guide_bootstrap": [
+        -0.8,
+        0.66
+      ],
+      "n_guides": 10
+    },
+    "mismatch_pattern_oracle_21feat": {
+      "rho_spearman": 0.867,
+      "rho_ci95_guide_bootstrap": [
+        0.459,
+        0.988
+      ],
+      "n_guides": 10
+    }
+  },
+  "cfd_note": "CFD (Doench et al. 2016) is not run here: the penalty matrix ships only as a binary pickle (CRISPOR: CFD_Scoring/mismatch_score.pkl, pam_scores.pkl) and downloading/unpickling third-party binaries was blocked in this environment. To add it: `git clone https://github.com/maximilianh/crisporWebsite && python audit/a5_domain_baselines.py --cfd crisporWebsite/CFD_Scoring`.",
+  "literature_comparison_note": "Published pair-level numbers for CFD / Elevation / CRISTA / DeepCRISPR / CRISPR-Net on these same public benchmarks (the I_*/II_* files) should be tabulated in the manuscript with their source, clearly marked as literature values rather than re-runs."
+}
